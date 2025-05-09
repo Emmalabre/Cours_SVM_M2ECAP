@@ -59,10 +59,10 @@ Afin de garantir la confidentialité, les données personnelles sensibles ont é
 <a href="https://www.kaggle.com/datasets/kukuroo3/body-signal-of-smoking/data">Kaggle - Body Signal of Smoking</a>. 
 Cet échantillon permet de poser un problème de classification binaire : prédire si une personne fume (1 = non fumeur, 2 = fumeur) à partir de données biologiques et cliniques.</p>
 
-<p align="justify">Le jeu de données contient 27 variables et 55 692 observations. Le tableau ci-dessous (Tableau 1) permet d'en avoir un aperçu : </p>
+<p align="justify">Le jeu de données contient 27 variables et 55 692 observations. Le tableau ci-dessous (<strong>Tableau 6</strong>) permet d'en avoir un aperçu : </p>
 
 
-<p align="center"> <u>Tableau 1 : Tableau présentant les variables </u></p>
+<p align="center"> <u>Tableau 1 : Présentation des variables </u></p>
 
 <div align="center">
 
@@ -236,7 +236,7 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 #### a) Liens entre la variable cible et les prédicteurs quantitatifs
 
-<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong> .</p>
+<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong>) .</p>
 
 <p align="center"><u>Tableau 3 : Moyenne des variables quantitatives en fonction de la variable cible</u></p>
 
@@ -354,10 +354,13 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 <p align="justify">Nous avons commencé par tester les modèles sans optimisation, avec leurs paramètres par défaut. Cela nous a permis d’identifier ceux qui étaient les plus prometteurs dans notre contexte.</p> <p>
 
 <p align="justify">
-Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (Tableau 4).
+Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (<strong>Tableau 4</strong>).
 </p>
 
- Tableau 4 – Résultats des modèles sans validation croisée
+<p align="center"> <u>Tableau 4 : Performances des modèles non optimisés </u></p>
+
+<div align="center">
+
 
 | Modèle               | Données | Accuracy  | Erreur    | Précision | Recall   | F1-score |
 |----------------------|---------|-----------|-----------|-----------|----------|----------|
@@ -378,17 +381,24 @@ Les résultats initiaux ont été obtenus sans validation croisée, en comparant
 | SGDClassifier        | Train   | 0.636177  | 0.363823  | 0.889610  | 0.010468 | 0.020693 |
 | SGDClassifier        | Test    | 0.636853  | 0.363147  | 0.784314  | 0.012251 | 0.024125 |
 
-<p align="justify">
-Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli sont présentés dans le <strong>Tableau 5</strong>, et les statistiques globales (moyenne et écart-type du F1-score) dans le <strong>Tableau 3</strong>.
-</p>
+</div> 
+
+ <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 <p align="justify">
-<b>Tableau 5 : Figure et tableau comparatif – F1-scores de la cross validation des modèles non optimisés</b>
+Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli et les statistiques sont présentés dans le <strong>Tableau 5</strong>
+</p>
+
+<p align="center"> <u>Tableau 5 : Performances en cross-validation des modèles non optimisés </u></p>
+
+<div align="center">
 
 | Graphique F1-score | Tableau 3 – Moyenne et écart-type des F1-score |
 |-----------------------------------------------|---------------------------------------------|
 | <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/raw/main/Screenshots/graph_cv.png" width="1500"/> | <table><thead><tr><th>Modèle</th><th>Moyenne</th><th>Écart-type</th></tr></thead><tbody><tr><td>Logistic Regression</td><td>0.5791</td><td>0.0047</td></tr><tr><td>Random Forest</td><td>0.6681</td><td>0.0010</td></tr><tr><td>Gradient Boosting</td><td>0.6839</td><td>0.0034</td></tr><tr><td>SVC (RBF)</td><td>0.5184</td><td>0.0058</td></tr><tr><td>SVC (Linear)</td><td>0.6687</td><td>0.0058</td></tr><tr><td>SVC (Poly)</td><td>0.5445</td><td>0.0072</td></tr><tr><td>LinearSVC</td><td>0.6699</td><td>0.0063</td></tr><tr><td>SGDClassifier</td><td>0.1947</td><td>0.2478</td></tr></tbody></table> |
-</p>
+</div> 
+
+ <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 
 <p align="justify">
@@ -437,8 +447,12 @@ Ce choix reste toutefois contextuel : en dépistage ou prévention précoce, ce 
 </p>
 
 <p align="justify">
-Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non optimisés sont présentées dans le tableau ci-dessous.
+Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non optimisés sont présentées dans le tableau ci-dessous (<strong>Tableau 6</strong>).
 </p>
+
+<p align="center"> <u>Tableau 6 : Performances des différents modèles </u></p>
+
+<div align="center">
 
 | Nom                                             | Recall   | F1-score | Accuracy | Precision | Best Params                                                                 |
 |--------------------------------------------------|----------|----------|----------|-----------|------------------------------------------------------------------------------|
@@ -453,7 +467,9 @@ Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non
 | Gradient Boosting - GridSearch + Undersampling   | 0.913936 | 0.715931 | 0.734261 | 0.588444  | {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__n_estimators': 100} |
 | Gradient Boosting - Sélection de variables       | 0.715161 | 0.685354 | 0.759398 | 0.657932  | {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}                |
 | Gradient Boosting - Résultats avec log transform | 0.914242 | 0.715656 | 0.733812 | 0.587946  | {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__n_estimators': 100} |
+</div> 
 
+ <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 # III. Interprétation du meilleur modèle
 
