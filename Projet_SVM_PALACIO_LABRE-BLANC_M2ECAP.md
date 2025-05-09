@@ -20,11 +20,11 @@
 - [Introduction](#introduction)
 - [I. Analyse exploratoire](#i-analyse-exploratoire)
   - [A. Présentation des données](#a-Présentation-des-données)
-  - [B. Analyse univariée](#a-Analyse-univariée)
-  - [C. Analyse bivariée](#b-Analyse-bivariée)
+  - [B. Analyse univariée](#b-Analyse-univariée)
+  - [C. Analyse bivariée](#c-Analyse-bivariée)
 - [II. Phase préparatoire et modélisations](#ii-Phase-préparatoire-et-modélisations)
   - [A. Préparation des variables pour la modélisation](#a-Préparation-des-variables-pour-la-modélisation)
-  - [B. Modélisation](#b-Modélisations)
+  - [B. Modélisations](#b-Modélisations)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
   - [B. Interprétation locale](#b-interprétation-locale)
@@ -234,7 +234,7 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 ### 1. Variable cible et prédicteurs qualitatifs et quantitatifs
 
-#### a) cible et prédicteurs quantitatifs
+#### a) Variable cible et prédicteurs quantitatifs
 
 <p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong> .</p>
 
@@ -274,7 +274,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 </p>
 
 
-#### b) cible et prédicteurs qualitatifs
+#### b) Variable cible et prédicteurs qualitatifs
 
 <p align="justify"> Nous avons également exploré les associations entre la variable cible et les prédicteurs qualitatifs (<strong>Figure 4</strong>) : </p>
   
@@ -555,29 +555,26 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
 - [Introduction](#introduction)
 - [I. Analyse exploratoire](#i-analyse-exploratoire)
   - [A. Présentation des données](#a-présentation-des-données)
-  - [B. Analyse univariée](#a-analyse-univariée)
+  - [B. Analyse univariée](#b-analyse-univariée)
     - [1) Variable d'intérêt](#1-variable-dintérêt)
     - [2) Prédicteurs quantitatifs](#2-prédicteurs-quantitatifs)
     - [3) Prédicteurs qualitatifs](#3-prédicteurs-qualitatifs)
-  - [C. Analyse bivariée](#b-analyse-bivariée)
-    - [1) Etude des corrélations](#1-variable-cible-et-prédicteurs-qualitatifs)
-    - [2) Liens entre la variable à prédire et les prédicteurs qualitatifs](#2-etude-des-corrélations)
+  - [C. Analyse bivariée](#c-analyse-bivariée)
+    - [1) Liens entre la variable à prédire et les prédicteurs qualitatifs](#1-Variable-cible-et-prédicteurs-qualitatifs-et-quantitatifs)
+        - [a) Variable cible et prédicteurs quantitatifs](#a-Variable-cible-et-prédicteurs-quantitatifs)
+        - [b) Variable cible et prédicteurs qualitatifs](#b-Variable-cible-et-prédicteurs-qualitatifs)
+    - [2) Etude des corrélations](#2-etude-des-corrélations)
     - [3) Lien entre les variables qualitatives](#3-lien-entre-les-variables-qualitatives)
-- [II. Modélisation](#ii-modélisation)
-  - [A. Préparation des variables pour la modélisation](#a-Préparation-des-données)
-    - [1) Encodage des variables categorielles](#1-Encodage-des-variables-catégorielles)
-    - [2) Séparation du jeu de données en jeux train et test](#2-Séparation-du-jeu-de-données-en-jeu-train-et-test)
-    - [3) Traitement des valeurs atypiques : winsorization](#3-Traitement-des-valeurs-atypiques-:-Winsorization)
-    - [4) Standardisation](#4-Standardisation)
-  - [B. Construction des modèles](#b-construction-des-modèles)
-    - [1) Modélisations avec les paramètres par défaut](#1-modélisation-avec-les-paramètres-par-défaut)
-    - [2) Évaluation des modèles](#2-évaluation-des-modèles-accuracy-et-f1-score-et-choix)
-      - [a) Définitions des métriques](#a-définitions-des-métriques)
-      - [b) Présentation du raisonnement pour le choix du modèle final](#b-présentation-du-raisonnement-pour-le-choix-du-modèle-final)
-      - [c) Etat des lieux sans la validation croisée](#c-etat-des-lieux-sans-la-validation-croisée)
-      - [d) Etat des lieux avec la validation croisée](#d-etat-des-lieux-avec-la-validation-croisée)
-      - [e) Optimisation des modèles](#e-optimisation-des-modèles)
-      - [f) Importance des variables](#f-importance-des-variables)
+- [II. Phase préparatoire et modélisations](#ii-Phase-préparatoire-et-modélisations)
+  - [A. Préparation des variables pour la modélisation](#a-Préparation-des-variables-pour-la-modélisation)
+    - [1) Séparation du jeu de données en jeux train et test](#1-Séparation-du-jeu-de-données-en-jeux-train-et-test)
+    - [2) Traitement des valeurs atypiques : winsorization](#2-Traitement-des-valeurs-atypiques-:-winsorization)
+    - [3) Standardisation et encodage](#3-Standardisation-et-encodage)
+  - [B. Modélisations](#b-Modélisations)
+    - [1) Présentation des modèles et métriques pour la comparaison](#1-Présentation-des-modèles-et-métriques-pour-la-comparaison)
+    - [2) Modélisations avec les paramètres par défaut](#2-Modélisations-avec-les-paramètres-par-défaut)
+    - [3) Modélisations optimisées : Présentation des stratégies d'optimisation](#3-Modélisations-optimisées-:-Présentation-des-stratégies-d'optimisation)
+    - [4) Choix du meilleur modèle](#4-Choix-du-meilleur-modèle)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
     - [1) Partial Dependence Plots - PDP](#1-partial-dependence-plots---pdp)
