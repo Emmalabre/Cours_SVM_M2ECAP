@@ -62,7 +62,7 @@ Cet échantillon permet de poser un problème de classification binaire : prédi
 <p align="justify">Le jeu de données contient 27 variables et 55 692 observations. Le tableau ci-dessous (Tableau 1) permet d'en avoir un aperçu : </p>
 
 
-<p align="center"> <u>Tableau N°1 : Tableau présentant les variables </u></p>
+<p align="center"> <u>Tableau 1 : Tableau présentant les variables </u></p>
 
 <div align="center">
 
@@ -133,7 +133,7 @@ Cet échantillon permet de poser un problème de classification binaire : prédi
 <p align="justify">
 Nous débutons par l’analyse de la variable cible : le statut tabagique des individus. La distribution des classes est représentée par un histogramme (<strong>Figure 1</strong>).</p>
 
-<p align="center"><u>Figure n°1 : Distribution de la variable cible</u></p>
+<p align="center"><u>Figure 1 : Distribution de la variable cible</u></p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_smoking.png" alt="Graphique de la variable cible">
@@ -291,7 +291,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 ### 2. Etude des corrélations
 
-<p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles (<strong>Figure 4</strong>) : </p>
+<p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles (<strong>Figure 5</strong>) : </p>
 
 <p align="center"> <u>Figure 5 : Corrélations entre les variables quantitatives</u> </p>
 
@@ -354,10 +354,10 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 <p align="justify">Nous avons commencé par tester les modèles sans optimisation, avec leurs paramètres par défaut. Cela nous a permis d’identifier ceux qui étaient les plus prometteurs dans notre contexte.</p> <p>
 
 <p align="justify">
-Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (cf. Tableau 1).
+Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (Tableau 4).
 </p>
 
-### Tableau 1 – Résultats des modèles sans validation croisée
+ Tableau 4 – Résultats des modèles sans validation croisée
 
 | Modèle               | Données | Accuracy  | Erreur    | Précision | Recall   | F1-score |
 |----------------------|---------|-----------|-----------|-----------|----------|----------|
@@ -379,31 +379,17 @@ Les résultats initiaux ont été obtenus sans validation croisée, en comparant
 | SGDClassifier        | Test    | 0.636853  | 0.363147  | 0.784314  | 0.012251 | 0.024125 |
 
 <p align="justify">
-Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli sont présentés dans le <strong>Tableau 2</strong>, et les statistiques globales (moyenne et écart-type du F1-score) dans le <strong>Tableau 3</strong>.
+Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli sont présentés dans le <strong>Tableau 5</strong>, et les statistiques globales (moyenne et écart-type du F1-score) dans le <strong>Tableau 3</strong>.
 </p>
 
-### Tableau 2 – Résultats F1-score par pli (Cross-validation à 5 plis)
+<p align="justify">
+<b>Tableau 5 : Figure et tableau comparatif – F1-scores de la cross validation des modèles non optimisés</b>
 
-|                    | Logistic Regression | Random Forest | Gradient Boosting | SVC (RBF) | SVC (Linear) | SVC (Poly) | LinearSVC | SGDClassifier |
-|--------------------|---------------------|----------------|-------------------|-----------|--------------|-------------|-----------|----------------|
-| Fold 1             | 0.579668            | 0.667040       | 0.684962          | 0.516760  | 0.660084     | 0.536328    | 0.664850  | 0.000000       |
-| Fold 2             | 0.580901            | 0.669417       | 0.681290          | 0.524376  | 0.673123     | 0.553153    | 0.678689  | 0.052476       |
-| Fold 3             | 0.582193            | 0.668545       | 0.682384          | 0.509638  | 0.672170     | 0.538160    | 0.671065  | 0.037244       |
-| Fold 4             | 0.570887            | 0.668159       | 0.689352          | 0.518260  | 0.672737     | 0.549705    | 0.671965  | 0.299416       |
-| Fold 5             | 0.581766            | 0.667290       | 0.681262          | 0.522839  | 0.665223     | 0.545287    | 0.662784  | 0.584317       |
+| Graphique F1-score | Tableau 3 – Moyenne et écart-type des F1-score |
+|-----------------------------------------------|---------------------------------------------|
+| <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/raw/main/Screenshots/graph_cv.png" width="1500"/> | <table><thead><tr><th>Modèle</th><th>Moyenne</th><th>Écart-type</th></tr></thead><tbody><tr><td>Logistic Regression</td><td>0.5791</td><td>0.0047</td></tr><tr><td>Random Forest</td><td>0.6681</td><td>0.0010</td></tr><tr><td>Gradient Boosting</td><td>0.6839</td><td>0.0034</td></tr><tr><td>SVC (RBF)</td><td>0.5184</td><td>0.0058</td></tr><tr><td>SVC (Linear)</td><td>0.6687</td><td>0.0058</td></tr><tr><td>SVC (Poly)</td><td>0.5445</td><td>0.0072</td></tr><tr><td>LinearSVC</td><td>0.6699</td><td>0.0063</td></tr><tr><td>SGDClassifier</td><td>0.1947</td><td>0.2478</td></tr></tbody></table> |
+</p>
 
-### Tableau 3 – Moyenne et écart-type des F1-score (Cross-validation)
-
-| Modèle              | Moyenne F1-score | Écart-type  |
-|---------------------|------------------|-------------|
-| Logistic Regression | 0.579083         | 0.004682    |
-| Random Forest       | 0.668090         | 0.000964    |
-| Gradient Boosting   | 0.683850         | 0.003425    |
-| SVC (RBF Kernel)    | 0.518375         | 0.005807    |
-| SVC (Linear Kernel) | 0.668667         | 0.005793    |
-| SVC (Poly Kernel)   | 0.544527         | 0.007238    |
-| LinearSVC           | 0.669871         | 0.006305    |
-| SGDClassifier       | 0.194691         | 0.247838    |
 
 <p align="justify">
 Le <strong>Gradient Boosting</strong> est le modèle le plus performant en validation croisée, avec un F1-score moyen de <strong>0.684</strong> et une variance très faible, ce qui témoigne de sa stabilité. Il surpasse même le Random Forest et LinearSVC sur cette base. Le <strong>SGDClassifier</strong>, en revanche, affiche un F1-score moyen de seulement 0.195 avec un écart-type extrêmement élevé de 0.25, montrant une <strong>grande instabilité</strong> et des performances peu fiables.
