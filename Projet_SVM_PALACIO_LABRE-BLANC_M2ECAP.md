@@ -367,9 +367,9 @@ Par ailleurs, la variable taille présente une différence notable selon le stat
 
 ### 1) Présentation des modèles et métriques pour la comparaison
 
-<p align="justify"> Dans le but de prédire le <strong>statut tabagique</strong> des individus (variable cible : smoking), nous avons entraîné et comparé plusieurs modèles de classification binaire : </p> <ul> <li><strong>Régression logistique</strong> : modèle linéaire paramétrique, simple, rapide à entraîner et aisément interprétable. Il constitue un excellent <em>modèle de référence</em> pour évaluer la linéarité entre les variables prédictives et la variable cible.</li> <li><strong>Random Forest</strong> : modèle non paramétrique basé sur un ensemble d’arbres de décision construits aléatoirement. Il est capable de capturer des interactions non linéaires, de gérer des variables hétérogènes (numériques, catégorielles, ordinales) et se montre robuste face aux valeurs aberrantes.</li> <li><strong>Gradient Boosting / XGBoost</strong> : modèles puissants d’<em>ensemble learning</em> qui construisent séquentiellement des arbres pour corriger les erreurs des précédents. Très performants sur des relations complexes et adaptées à des effets faibles répartis sur de nombreuses variables. XGBoost, en particulier, est reconnu pour sa rapidité et son efficacité.</li> <li><strong>SVM (Support Vector Machines)</strong> avec différents noyaux (<em>linéaire</em>, <em>RBF</em>, <em>polynomial</em>) : ces modèles cherchent à maximiser la marge entre les classes. Le noyau linéaire permet de tester la séparabilité linéaire des données, tandis que les noyaux RBF et polynomial permettent de modéliser des frontières de décision plus complexes en projetant les données dans des espaces de dimension supérieure.</li> <li><strong>Classifieurs linéaires</strong> : <ul> <li><strong>LinearSVC</strong> : une implémentation optimisée du SVM linéaire, adaptée aux grands jeux de données.</li> <li><strong>SGDClassifier</strong> : algorithme basé sur la descente de gradient stochastique, très rapide, particulièrement efficace pour les jeux de données volumineux ou en streaming.</li> </ul> </li> </ul> 
-<p align="justify"> Pour évaluer la performance de ces modèles, nous avons utilisé différentes métriques d’évaluation, mesurées à la fois : </p> <ul> <li>Sur les jeux d'entraînement et de test pour évaluer leur capacité de généralisation.</li> <li>En validation croisée (5-fold) pour estimer la robustesse et la stabilité des performances.</li> </ul> 
-<p align="justify">Les résultats ont été synthétisés sous forme de tableaux et de graphiques comparatifs.</p> <h4><u>Métriques utilisées</u> :</h4> <ul> <li><strong>Accuracy</strong> : proportion globale de bonnes prédictions (vrais positifs + vrais négatifs). Elle répond à la question : <em>« À quelle fréquence le modèle est-il correct ? »</em></li> <li><strong>Erreur (1 - accuracy)</strong> : proportion d’observations mal classées. Elle permet de mesurer l'inefficacité du modèle. Un bon modèle aura une <strong>accuracy proche de 1</strong> et une erreur proche de 0.</li> <li><strong>Précision</strong> : parmi les individus prédits comme fumeurs, quelle proportion l’est réellement ? Cette métrique est sensible aux <em>faux positifs</em>.</li> <li><strong>Rappel (Recall)</strong> : parmi les fumeurs réels, combien ont été correctement identifiés ? Cette métrique est sensible aux <em>faux négatifs</em>.</li> <li><strong>F1-score</strong> : moyenne harmonique entre précision et rappel. Elle est particulièrement utile lorsque les classes sont déséquilibrées (ce qui est modérément le cas ici). Un bon modèle affiche un F1-score élevé, proche de 1.</li> </ul> 
+<p align="justify"> Dans le but de prédire le <strong>statut tabagique</strong> des individus (variable cible : smoking), nous avons entraîné et comparé plusieurs modèles de classification binaire : </p> <ul align="justify"> <li><strong>Régression logistique</strong> : modèle linéaire paramétrique, simple, rapide à entraîner et aisément interprétable. Il constitue un excellent <em>modèle de référence</em> pour évaluer la linéarité entre les variables prédictives et la variable cible.</li> <li><strong>Random Forest</strong> : modèle non paramétrique basé sur un ensemble d’arbres de décision construits aléatoirement. Il est capable de capturer des interactions non linéaires, de gérer des variables hétérogènes (numériques, catégorielles, ordinales) et se montre robuste face aux valeurs aberrantes.</li> <li><strong>Gradient Boosting / XGBoost</strong> : modèles puissants d’<em>ensemble learning</em> qui construisent séquentiellement des arbres pour corriger les erreurs des précédents. Très performants sur des relations complexes et adaptées à des effets faibles répartis sur de nombreuses variables. XGBoost, en particulier, est reconnu pour sa rapidité et son efficacité.</li> <li><strong>SVM (Support Vector Machines)</strong> avec différents noyaux (<em>linéaire</em>, <em>RBF</em>, <em>polynomial</em>) : ces modèles cherchent à maximiser la marge entre les classes. Le noyau linéaire permet de tester la séparabilité linéaire des données, tandis que les noyaux RBF et polynomial permettent de modéliser des frontières de décision plus complexes en projetant les données dans des espaces de dimension supérieure.</li> <li><strong>Classifieurs linéaires</strong> : <ul> <li><strong>LinearSVC</strong> : une implémentation optimisée du SVM linéaire, adaptée aux grands jeux de données.</li> <li><strong>SGDClassifier</strong> : algorithme basé sur la descente de gradient stochastique, très rapide, particulièrement efficace pour les jeux de données volumineux ou en streaming.</li> </ul> </li> </ul> 
+<p align="justify"> Pour évaluer la performance de ces modèles, nous avons utilisé différentes métriques d’évaluation, mesurées à la fois : </p> <ul align="justify"> <li>Sur les jeux d'entraînement et de test pour évaluer leur capacité de généralisation.</li> <li>En validation croisée (5-fold) pour estimer la robustesse et la stabilité des performances.</li> </ul> 
+<p align="justify">Les résultats ont été synthétisés sous forme de tableaux et de graphiques comparatifs.</p> <h4><u align="justify">Métriques utilisées</u> :</h4> <ul align="justify"> <li><strong>Accuracy</strong> : proportion globale de bonnes prédictions (vrais positifs + vrais négatifs). Elle répond à la question : <em>« À quelle fréquence le modèle est-il correct ? »</em></li> <li><strong>Erreur (1 - accuracy)</strong> : proportion d’observations mal classées. Elle permet de mesurer l'inefficacité du modèle. Un bon modèle aura une <strong>accuracy proche de 1</strong> et une erreur proche de 0.</li> <li><strong>Précision</strong> : parmi les individus prédits comme fumeurs, quelle proportion l’est réellement ? Cette métrique est sensible aux <em>faux positifs</em>.</li> <li><strong>Rappel (Recall)</strong> : parmi les fumeurs réels, combien ont été correctement identifiés ? Cette métrique est sensible aux <em>faux négatifs</em>.</li> <li><strong>F1-score</strong> : moyenne harmonique entre précision et rappel. Elle est particulièrement utile lorsque les classes sont déséquilibrées (ce qui est modérément le cas ici). Un bon modèle affiche un F1-score élevé, proche de 1.</li> </ul> 
 <p align="justify"> L’objectif de cette évaluation multiple est de ne pas se limiter à l’accuracy, qui peut être trompeuse en cas de déséquilibre de classes, Une forte accuracy peut masquer des performances médiocres sur la classe minoritaire, pourtant essentielle à détecter dans notre étude. C’est pourquoi d’autres métriques sont mobilisées afin de mieux comprendre les compromis entre faux positifs et faux négatifs. </p>
 <p align="justify"> Ainsi, une attention particulière est portée au <strong>f1-score</strong> et au <strong>recall</strong>, car il est crucial d’<strong>identifier correctement les individus fumeurs</strong>, même au prix de quelques faux positifs. En effet, dans un contexte de prévention ou de dépistage médical, il est souvent préférable de <strong>ne pas rater un cas à risque</strong> (fumeur non détecté), quitte à déclencher des vérifications supplémentaires. </p>
 
@@ -436,7 +436,7 @@ Compte tenu de ces résultats, nous avons décidé de retenir uniquement les mod
 
 ### 3) Modélisations optimisées - Présentation des stratégies d optimisation
 
-<p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul> <li><strong>Recherche d’hyperparamètres</strong> (GridSearchCV)</li> <li><strong>Resampling</strong></li> <li><strong>Sélection de variables</strong></li><li><strong>Transformations log</strong></li><li><strong>Combinaisons de ces stratégies</strong></li></p>
+<p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul align="justify"> <li><strong>Recherche d’hyperparamètres</strong> (GridSearchCV)</li> <li><strong>Resampling</strong></li> <li><strong>Sélection de variables</strong></li><li><strong>Transformations log</strong></li><li><strong>Combinaisons de ces stratégies</strong></li></ul>
 <p align="justify">Cette approche nous permet d’évaluer si un modèle sans optimisation suffit ou si la recherche d’hyperparamètres, le resampling, la sélection de variables ou les transformations log améliorent significativement les résultats, notamment en termes de rappel.</p>
 
 <strong>Pourquoi envisager une méthode de resampling : </strong>
@@ -541,25 +541,25 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
 
 # Glossaire
 
-<div style="text-align: justify;">
+<p align="justify">
 
-  <p><strong>Pression artérielle systolique (systolic)</strong> : Le cœur se contracte avec une grande force à la pression artérielle la plus élevée de l'examiné. Il s'agit de la pression intravasculaire lorsque le cœur pousse le sang dans les artères. (mmHg)</p>
+<strong>Pression artérielle systolique (systolic)</strong> : Le cœur se contracte avec une grande force à la pression artérielle la plus élevée de l'examiné. Il s'agit de la pression intravasculaire lorsque le cœur pousse le sang dans les artères. (mmHg)</p>
 
-  <p><strong>Pression artérielle diastolique (relaxation)</strong> : La pression artérielle enregistrée lorsque le cœur est en phase de relâchement (diastole), c’est-à-dire la pression minimale dans les artères entre deux battements. (mmHg)</p>
+<p align="justify"><strong>Pression artérielle diastolique (relaxation)</strong> : La pression artérielle enregistrée lorsque le cœur est en phase de relâchement (diastole), c’est-à-dire la pression minimale dans les artères entre deux battements. (mmHg)</p>
 
-  <p><strong>Glycémie préprandiale (fasting blood sugar)</strong> : Mesure de la concentration de glucose dans 100 ml de sang chez l'individu à jeun. Indicateur clé du métabolisme du glucose. (mg/dL)</p>
+  <p align="justify"><strong>Glycémie préprandiale (fasting blood sugar)</strong> : Mesure de la concentration de glucose dans 100 ml de sang chez l'individu à jeun. Indicateur clé du métabolisme du glucose. (mg/dL)</p>
 
-  <p><strong>Cholestérol total (cholesterol)</strong> : Somme du cholestérol estérifié et non estérifié (libre) dans le sérum. Le cholestérol libre représente environ un tiers du total, le reste étant des esters. Normale : 150–250 mg/dL.</p>
+  <p align="justify"><strong>Cholestérol total (cholesterol)</strong> : Somme du cholestérol estérifié et non estérifié (libre) dans le sérum. Le cholestérol libre représente environ un tiers du total, le reste étant des esters. Normale : 150–250 mg/dL.</p>
 
-  <p><strong>Triglycérides (triglyceride)</strong> : Lipides simples formés par l’estérification du glycérol avec trois acides gras. Ce sont les lipides les plus communs dans le corps. Valeur normale : 30–135 mg/dL.</p>
+  <p align="justify"><strong>Triglycérides (triglyceride)</strong> : Lipides simples formés par l’estérification du glycérol avec trois acides gras. Ce sont les lipides les plus communs dans le corps. Valeur normale : 30–135 mg/dL.</p>
 
-  <p><strong>HDL Cholestérol (HDL)</strong> : Particules de cholestérol de haute densité impliquées dans le transport inverse du cholestérol. Elles aident à nettoyer les vaisseaux sanguins. Valeur normale : 30–65 mg/dL.</p>
+  <p align="justify"><strong>HDL Cholestérol (HDL)</strong> : Particules de cholestérol de haute densité impliquées dans le transport inverse du cholestérol. Elles aident à nettoyer les vaisseaux sanguins. Valeur normale : 30–65 mg/dL.</p>
 
-  <p><strong>LDL Cholestérol (LDL)</strong> : Cholestérol contenu dans les lipoprotéines de basse densité. Un excès peut s'accumuler sur les parois artérielles, provoquant de l'athérosclérose. Hyperlipidémie au-delà de 170 mg/dL. (mg/dL)</p>
+  <p align="justify"><strong>LDL Cholestérol (LDL)</strong> : Cholestérol contenu dans les lipoprotéines de basse densité. Un excès peut s'accumuler sur les parois artérielles, provoquant de l'athérosclérose. Hyperlipidémie au-delà de 170 mg/dL. (mg/dL)</p>
 
-  <p><strong>Pigments sanguins / Hémoglobine (hemoglobin)</strong> : Protéine pigmentée du sang, composée de globine et d’un groupe hème, servant au transport de l’oxygène. (g/dL)</p>
+  <p align="justify"><strong>Pigments sanguins / Hémoglobine (hemoglobin)</strong> : Protéine pigmentée du sang, composée de globine et d’un groupe hème, servant au transport de l’oxygène. (g/dL)</p>
 
-  <p><strong>Protéinurie (Urine_protein)</strong> : Présence de protéines dans les urines, codée de 1 à 6 :
+  <p align="justify"><strong>Protéinurie (Urine_protein)</strong> : Présence de protéines dans les urines, codée de 1 à 6 :
     <br>1 (-) : Absence (normal),
     <br>2 (±) : Trace,
     <br>3 (+1) : Faible,
@@ -568,15 +568,15 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
     <br>6 (+4) : Sévère.
   </p>
 
-  <p><strong>Créatinine (creatinin)</strong> : Résidu métabolique issu de la créatine musculaire, excrété par les reins. Taux élevé en cas d'insuffisance rénale. Valeur normale : 0,8–1,7 mg/dL.</p>
+  <p align="justify"><strong>Créatinine (creatinin)</strong> : Résidu métabolique issu de la créatine musculaire, excrété par les reins. Taux élevé en cas d'insuffisance rénale. Valeur normale : 0,8–1,7 mg/dL.</p>
 
-  <p><strong>AST (Aspartate Aminotransférase)</strong> : Enzyme hépatique également présente dans le cœur, les reins, les muscles, etc. Sa concentration augmente lors de lésions cellulaires. Valeur normale : 0–40 UI/L.</p>
+  <p align="justify"><strong>AST (Aspartate Aminotransférase)</strong> : Enzyme hépatique également présente dans le cœur, les reins, les muscles, etc. Sa concentration augmente lors de lésions cellulaires. Valeur normale : 0–40 UI/L.</p>
 
-  <p><strong>ALT (Alanine Aminotransférase)</strong> : Enzyme principalement localisée dans le foie. Sa concentration augmente en cas de dommages hépatiques. Valeur normale : 0–40 UI/L.</p>
+  <p align="justify"><strong>ALT (Alanine Aminotransférase)</strong> : Enzyme principalement localisée dans le foie. Sa concentration augmente en cas de dommages hépatiques. Valeur normale : 0–40 UI/L.</p>
 
-  <p><strong>GTP (Gamma-Glutamyl Transférase)</strong> : Enzyme biliaire mesurant la fonction hépatique. Taux élevé en cas de dysfonctionnement des canaux biliaires ou du foie. Valeurs normales : jusqu’à 1163 UI/L (homme), 835 UI/L (femme).</p>
+  <p align="justify"><strong>GTP (Gamma-Glutamyl Transférase)</strong> : Enzyme biliaire mesurant la fonction hépatique. Taux élevé en cas de dysfonctionnement des canaux biliaires ou du foie. Valeurs normales : jusqu’à 1163 UI/L (homme), 835 UI/L (femme).</p>
 
-</div>
+</p>
 
 # Table des matières
 
