@@ -345,7 +345,7 @@ Par ailleurs, la variable taille présente une différence notable selon le stat
 
 <p align="justify"> Afin de pouvoir évaluer la capacité de généralisation de nos modèles, nous avons divisé notre jeu de données en deux ensembles distincts en utilisant la fonction <code>train_test_split</code> de <code>sklearn.model_selection</code> avec un ratio de 80 % des données pour l’entraînement et 20 % pour le test. Cette séparation permet d'éviter les biais d'optimisme et de s’assurer que les modèles ne sont pas uniquement adaptés aux données vues pendant l'entraînement. </p>
 
-<p align="justify">De plus, nous avons effectué cette séparation avant les autres opérations de transformation (standardisation, winsorization) pour éviter tout <strong>data leakage</strong>, c’est-à-dire que des informations statistiques issues du test influencent l’entraînement. Tous les prétraitements ultérieurs sont ainsi appris uniquement à partir des données d'entraînement, puis appliqués aux données de test. </p>
+<p align="justify">De plus, nous avons effectué cette séparation avant les autres opérations de transformation (standardisation, winsorization) pour éviter tout data leakage, c’est-à-dire que des informations statistiques issues du test influencent l’entraînement. Tous les prétraitements ultérieurs sont ainsi appris uniquement à partir des données d'entraînement, puis appliqués aux données de test. </p>
 
 ### 2) Traitement des valeurs atypiques - winsorization
 
@@ -357,7 +357,7 @@ Par ailleurs, la variable taille présente une différence notable selon le stat
 
 <p align="justify"> Pour que chaque variable quantitative contribue de manière équivalente aux algorithmes, et notamment aux modèles sensibles à l’échelle (comme les SVM ou la régression logistique), nous avons procédé à une standardisation. Celle-ci consiste à recentrer chaque variable (moyenne nulle) et à la réduire (écart-type unitaire). Pour ce faire, nous avons utilisé la fonction <code>StandardScaler</code> de <code>sklearn.preprocessing</code>. Comme pour les étapes précédentes, les paramètres de standardisation sont appris uniquement sur l'ensemble d’entraînement, puis appliqués au jeu de test.</p>
 
-<p align="justify"> Concernant les variables qualitatives, la seule variable catégorielle nécessitant un encodage est <strong>urine_protein</strong>, considérée comme ordinale. En effet, les autres variables qualitatives présentes dans notre jeu de données sont déjà représentées sous forme booléenne (0/1), ce qui les rend directement exploitables par les algorithmes. Pour cette variable ordinale, nous avons appliqué un encodage à l’aide de la classe <code>OrdinalEncoder</code> de <code>sklearn</code>, qui transforme chaque modalité selon l’ordre naturel de la sévérité.</p>
+<p align="justify"> Concernant les variables qualitatives, la seule variable catégorielle nécessitant un encodage est urine_protein, considérée comme ordinale. En effet, les autres variables qualitatives présentes dans notre jeu de données sont déjà représentées sous forme booléenne (0/1), ce qui les rend directement exploitables par les algorithmes. Pour cette variable ordinale, nous avons appliqué un encodage à l’aide de la classe <code>OrdinalEncoder</code> de <code>sklearn</code>, qui transforme chaque modalité selon l’ordre naturel de la sévérité.</p>
 
 <p align="justify">Cette étape à été réalisé grâce à la pipeline ColumnTransformer qui permet d’appliquer des transformations spécifiques à chaque type de variable.</p>
 
