@@ -293,7 +293,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 <p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles (<strong>Figure 4</strong>) : </p>
 
-<p align="center"><u>Figure 5 : Corrélations entre les variables quantitatives</u></p>
+<p align="center"> <u>Figure 5 : Corrélations entre les variables quantitatives</u> </p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/corr.png" alt="Corrélations">
@@ -301,7 +301,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
   
- <p align="justify"> À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionne sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
+ <p align="justify"> À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionnent sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
 
 ### 3. Lien entre les variables qualitatives
 
