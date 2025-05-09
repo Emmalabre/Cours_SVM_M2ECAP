@@ -323,7 +323,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 <p align="justify">De plus, nous avons effectué cette séparation avant les autres opérations de transformation (standardisation, winsorization) pour éviter tout <strong>data leakage</strong>, c’est-à-dire que des informations statistiques issues du test influencent l’entraînement. Tous les prétraitements ultérieurs sont ainsi appris uniquement à partir des données d'entraînement, puis appliqués aux données de test. </p>
 
-### 2) Traitement des valeurs atypiques : winsorization
+### 2) Traitement des valeurs atypiques - winsorization
 
 <p align="justify"> Comme nous avons pu précedemment le constater, plusieurs variables numériques présentent des valeurs atypiques, parfois cliniquement peu plausibles, susceptibles de perturber l'entraînement des modèles. Pour limiter leur influence sans exclure d'observations, nous avons appliqué une technique de <strong>winsorization</strong> à l'ensemble des variables suivantes : <em>'ALT', 'AST', 'Gtp', 'serum_creatinine', 'LDL', 'HDL', 'triglyceride', 'Cholesterol', 'fasting_blood_sugar', 'systolic', 'relaxation', 'hemoglobin'</em>. Cette méthode consiste à ramener les valeurs situées en dehors des 1er et 99e percentiles à ces bornes, de manière à réduire l'effet des outliers tout en conservant la distribution générale. </p> 
 <p align="justify"> Les variables <em>'age', 'weight', 'height', 'waist(cm)'</em> ainsi que <em>'eyesight(left)'</em> et <em>'eyesight(right)'</em> n'ont pas été winsorisées : bien que certaines valeurs aient été identifiées comme atypiques par des tests statistiques (comme le test ESD), elles restent cohérentes. </p> 
@@ -414,7 +414,7 @@ Compte tenu de ces résultats, nous avons décidé de retenir uniquement les mod
 </p>
 
 
-### 3) Modélisations optimisées : Présentation des stratégies d'optimisation
+### 3) Modélisations optimisées - Présentation des stratégies d'optimisation
 
 <p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul> <li><strong>Recherche d’hyperparamètres seule</strong> (GridSearchCV)</li> <li><strong>Resampling seul</strong></li> <li><strong>Resampling seul + GridSearchCV</strong></li> <li><strong>Sélection de variables + GridSearchCV</strong></li><li><strong>Transformations log</strong></li> </ul> 
 <p align="justify">Cette approche nous permet d’évaluer si une simple recherche d’hyperparamètres suffit ou si l’ajout de techniques comme le resampling ou la sélection de variables améliore significativement les résultats, notamment en termes de <strong>rappel</strong>.</p>
@@ -561,8 +561,8 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
     - [3) Prédicteurs qualitatifs](#3-prédicteurs-qualitatifs)
   - [C. Analyse bivariée](#c-analyse-bivariée)
     - [1) Liens entre la variable cible et les prédicteurs qualitatifs et quantitatifs](#1-Liens-entre-la-variable-cible-et-les-prédicteurs-qualitatifs-et-quantitatifs)
-        - [a) Liens entre la variable cible et prédicteurs quantitatifs](#a-Liens-entre-la-variable-cible-et-les-prédicteurs-quantitatifs)
-        - [b) Liens entre la variable cible et prédicteurs qualitatifs](#b-Liens-entre-la-variable-cible-et-les-prédicteurs-qualitatifs)
+        - [a) Liens entre la variable cible et les prédicteurs quantitatifs](#a-Liens-entre-la-variable-cible-et-les-prédicteurs-quantitatifs)
+        - [b) Liens entre la variable cible et les prédicteurs qualitatifs](#b-Liens-entre-la-variable-cible-et-les-prédicteurs-qualitatifs)
     - [2) Etude des corrélations](#2-etude-des-corrélations)
     - [3) Liens entre les variables qualitatives](#3-liens-entre-les-variables-qualitatives)
 - [II. Phase préparatoire et modélisations](#ii-Phase-préparatoire-et-modélisations)
@@ -577,8 +577,9 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
     - [4) Choix du meilleur modèle](#4-Choix-du-meilleur-modèle)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
-    - [1) Partial Dependence Plots - PDP](#1-partial-dependence-plots---pdp)
-    - [2) Permutation features importance](#2-permutation-features-importance)
+    - [1) Importance des variables](#1-Importance-des-variables)
+    - [2) Partial Dependence Plots - PDP](#2-partial-dependence-plots---pdp)
+    - [3) Permutation features importance](#3-permutation-features-importance)
   - [B. Interprétation locale](#b-interprétation-locale)
     - [1) ICE](#1-ice)
     - [2) LIME](#2-lime)
