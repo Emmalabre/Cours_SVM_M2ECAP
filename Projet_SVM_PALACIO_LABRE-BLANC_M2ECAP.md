@@ -529,7 +529,7 @@ Les résultats montrent que la variable la plus influente est le sexe, de très 
 Nous allons à présent nous intéresser aux Partial Dependence Plots (PDP), en focalisant notre attention sur les variables identifiées comme les plus importantes par le modèle de Gradient Boosting avec undersampling. Le but de cette visualisation est de mieux comprendre comment chaque variable influence, en moyenne, la prédiction du modèle, toutes choses égales par ailleurs.</p>
 
 <p align="justify">
-Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes (<strong>Figure 7</strong>). </p>
+Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes . </p>
 
 #### a) PDP des variables quantitatives
 
@@ -542,7 +542,7 @@ Les PDP permettent ainsi de représenter la relation marginale entre une variabl
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 <p align="justify">
-L’analyse des PDP révèle que une augmentation de la variable GTP est fortement associée à une augmentation de la probabilité d’être fumeur. Le GTP est une enzyme hépatique dont le taux augmente fréquemment en cas de consommation chronique d’alcool, une habitude souvent corrélée au tabagisme. De nombreuses études mettent en évidence que les personnes fumeuses ont aussi une consommation d’alcool plus élevée en moyenne, ce qui peut expliquer cette relation indirecte mais robuste entre GTP et statut tabagique.</p>
+L’analyse des PDP (<strong>Figure 7</strong>) révèle que une augmentation de la variable GTP est fortement associée à une augmentation de la probabilité d’être fumeur. Le GTP est une enzyme hépatique dont le taux augmente fréquemment en cas de consommation chronique d’alcool, une habitude souvent corrélée au tabagisme. De nombreuses études mettent en évidence que les personnes fumeuses ont aussi une consommation d’alcool plus élevée en moyenne, ce qui peut expliquer cette relation indirecte mais robuste entre GTP et statut tabagique.</p>
 
 <p align="justify">
 Concernant l’âge, le modèle identifie une probabilité plus élevée d’être fumeur dans les tranches d’âge jeunes à moyennes, avec une baisse progressive au-delà d’un certain seuil. Ce comportement est cohérent avec les tendances épidémiologiques observées, où les jeunes adultes et les personnes d’âge moyen affichent une prévalence plus élevée du tabagisme, tandis qu’une partie des individus plus âgés a tendance à arrêter ou réduire leur consommation, notamment pour des raisons de santé.</p>
@@ -553,12 +553,27 @@ Les triglycérides montrent également une relation croissante avec la probabili
 <p align="justify">
 Enfin, l'augmentation des enzymes hépatiques ALT et AST est associée à une légère baisse de la probabilité prédite d'être fumeur. Bien que cette relation puisse sembler contre-intuitive, elle pourrait refléter des effets indirects : ces enzymes peuvent être élevées dans certaines pathologies pour lesquelles les individus sont médicalement suivis, incités à adopter un mode de vie plus sain ou à arrêter de fumer.</p>
 
+<p align="justify">
+Nous avons également généré des PDP à partir des données non standardisées afin d’identifier les niveaux de rupture dans les relations (<strong>Figure 7</strong>). </p>
+
+<p align="center"> <u>Figure 8 : Partial dépendence plot (PDP) des variables quantitatives de la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdpreel.png" alt="Importance">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
+<p align="justify">
+Pour GTP, la probabilité de fumer augmente nettement jusqu’à environ 80 U/L, puis se stabilise. Pour l’âge, la probabilité augmente progressivement jusqu’à 40 ans, puis diminue au-delà. L’augmentation des triglycérides entraîne une hausse continue de la probabilité de fumer. Pour ALT, plus les valeurs augmentent, plus la probabilité diminue, de manière régulière. Enfin, pour AST, une hausse entre 10 et 20 U/L correspond à une diminution de la probabilité, qui se stabilise entre 20 et 40, avant d’augmenter légèrement au-delà de 40 U/L, avec une stabilisation vers 45.</p>
+
+
 #### b) PDP de la variable qualitative 
 
 <p align="justify">
-Concernant la variable qualitative identifiée comme la plus importante, selon ce PDP (<strong>Figure 8</strong>), on constate que le fait d’être un homme augmente significativement la probabilité prédite de fumer, tandis qu’être une femme la diminue. Autrement dit, toutes choses égales par ailleurs, le modèle estime qu’un homme a plus de chances d’être fumeur qu’une femme. Cette observation est cohérente avec de nombreuses données épidémiologiques : dans plusieurs pays, et notamment en population adulte, les taux de tabagisme sont plus élevés chez les hommes que chez les femmes. Cela peut s’expliquer par des facteurs sociaux et culturels, comme des différences dans les normes comportementales, une exposition plus fréquente à certains environnements propices au tabagisme (par exemple, certains milieux professionnels), ou encore des stratégies de gestion du stress qui varient selon le genre. </p>
+Concernant la variable qualitative identifiée comme la plus importante, selon ce PDP (<strong>Figure 9</strong>), on constate que le fait d’être un homme augmente significativement la probabilité prédite de fumer, tandis qu’être une femme la diminue. Autrement dit, toutes choses égales par ailleurs, le modèle estime qu’un homme a plus de chances d’être fumeur qu’une femme. Cette observation est cohérente avec de nombreuses données épidémiologiques : dans plusieurs pays, et notamment en population adulte, les taux de tabagisme sont plus élevés chez les hommes que chez les femmes. Cela peut s’expliquer par des facteurs sociaux et culturels, comme des différences dans les normes comportementales, une exposition plus fréquente à certains environnements propices au tabagisme (par exemple, certains milieux professionnels), ou encore des stratégies de gestion du stress qui varient selon le genre. </p>
 
-<p align="center"> <u>Figure 8 : Partial dépendence plot (PDP) de la variable homme de la modélisation Gradient Boosting avec resample </p>
+<p align="center"> <u>Figure 9 : Partial dépendence plot (PDP) de la variable homme de la modélisation Gradient Boosting avec resample </p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdp2.png" alt="Importance">
