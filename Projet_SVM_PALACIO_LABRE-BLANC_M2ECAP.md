@@ -156,7 +156,7 @@ Nous procéderons donc, dans un premier temps, à l’entraînement des modèles
 
 <p align="justify"> L’analyse des variables quantitatives est résumée dans le tableau des statistiques descriptives (<strong>Tableau 2</strong>) ainsi que dans les histogrammes présentés en <strong>Figures 2</strong>.</p>
 
-<p align="center"> <u>Tableau N°2 : Statistiques descriptives des variables quantitatives </u></p>
+<p align="center"> <u>Tableau 2 : Statistiques descriptives des variables quantitatives </u></p>
 
 <div align="center">
 
@@ -184,7 +184,7 @@ Nous procéderons donc, dans un premier temps, à l’entraînement des modèles
 
  <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
- <p align="center"><u>Figure n°2 : Distribution des variables quantitatives</u></p>
+ <p align="center"><u>Figure 2 : Distribution des variables quantitatives</u></p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/image2.png" alt="Graphique des variables quantitatives">
@@ -212,7 +212,7 @@ Ainsi, comme nous l'avons constater, plusieurs variables présentent des valeurs
 
 <p align="justify"> La distribution des variables qualitatives a été visualisée à l’aide de diagrammes en barres (<strong>Figure 3</strong>). </p>
 
-<p align="center"><u>Figure n°3 : Distribution des variables qualitatives</u></p>
+<p align="center"><u>Figure 3 : Distribution des variables qualitatives</u></p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_quali.png" alt="Graphique des variables qualitatives">
@@ -236,24 +236,77 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 #### a) cible et prédicteurs quantitatifs
 
-<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives. Les fumeurs sont, en moyenne, plus jeunes, mais aussi plus grands, plus lourds et présentent un tour de taille plus élevé — des caractéristiques probablement liées à une surreprésentation masculine dans ce groupe. Leur tension artérielle (systolique et diastolique) est légèrement plus élevée, en lien avec les effets vasoconstricteurs de la nicotine, et leur glycémie à jeun tend à être supérieure, ce qui peut indiquer un risque accru de troubles métaboliques. Paradoxalement, leur cholestérol total est légèrement inférieur à celui des non-fumeurs. Toutefois, cette différence masque une baisse du HDL (le bon cholestérol), ce qui n’indique pas nécessairement un meilleur profil lipidique. En effet, un HDL plus bas est associé à un risque cardiovasculaire accru, et peut déséquilibrer le rapport LDL/HDL. Enfin, l'acuité visuelle moyenne des fumeurs apparaît légèrement meilleure. Ce résultat, contre-intuitif, pourrait s’expliquer par une différence d’âge : les fumeurs de l’échantillon étant en moyenne plus jeunes, ils sont naturellement moins touchés par la presbytie ou d'autres troubles visuels liés à l’âge.</p>
+<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong> .</p>
+
+<p align="center"><u>Tableau 3 : Moyenne des variables quantitatives en fonction de la variable cible</u></p>
+
+<div align="center">
+
+| Variable              | Non-fumeur (False) | Fumeur (True) |
+|-----------------------|--------------------|---------------|
+| age                   | 45.693972          | 41.652703     |
+| height(cm)            | 161.899291         | 169.412916    |
+| weight(kg)            | 62.959397          | 70.926186     |
+| waist(cm)             | 80.490858          | 84.812904     |
+| eyesight(left)        | 0.989656           | 1.049798      |
+| eyesight(right)       | 0.984894           | 1.048202      |
+| systolic              | 120.761809         | 122.852556    |
+| relaxation            | 75.249149          | 77.412916     |
+| fasting_blood_sugar   | 97.742376          | 102.041279    |
+| Cholesterol           | 197.833262         | 195.552104    |
+| triglyceride          | 113.040567         | 150.317148    |
+| HDL                   | 59.270071          | 53.870841     |
+| LDL                   | 116.441277         | 112.617906    |
+| hemoglobin            | 14.148823          | 15.438662     |
+| serum_creatinine      | 0.850078           | 0.948233      |
+| AST                   | 25.343404          | 27.714836     |
+| ALT                   | 24.802730          | 31.020915     |
+| Gtp                   | 30.991773          | 55.715325     |
+</div> 
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
+<p align="justify">Les fumeurs sont, en moyenne, plus jeunes, mais aussi plus grands, plus lourds et présentent un tour de taille plus élevé — des caractéristiques probablement liées à une surreprésentation masculine dans ce groupe. Leur tension artérielle (systolique et diastolique) est légèrement plus élevée, en lien avec les effets vasoconstricteurs de la nicotine, et leur glycémie à jeun tend à être supérieure, ce qui peut indiquer un risque accru de troubles métaboliques. Paradoxalement, leur cholestérol total est légèrement inférieur à celui des non-fumeurs. Toutefois, cette différence masque une baisse du HDL (le bon cholestérol), ce qui n’indique pas nécessairement un meilleur profil lipidique. En effet, un HDL plus bas est associé à un risque cardiovasculaire accru, et peut déséquilibrer le rapport LDL/HDL. Enfin, l'acuité visuelle moyenne des fumeurs apparaît légèrement meilleure. Ce résultat, contre-intuitif, pourrait s’expliquer par une différence d’âge : les fumeurs de l’échantillon étant en moyenne plus jeunes, ils sont naturellement moins touchés par la presbytie ou d'autres troubles visuels liés à l’âge.</p>
 <p align="justify">Ces écarts suggèrent une association entre le statut tabagique et certaines caractéristiques physiologiques, cohérente avec les effets connus du tabac sur la santé métabolique et cardiovasculaire. </p> 
-<p align="justify"> Une attention particulière a été portée à la variable <strong>taille</strong>, dont la distribution diffère fortement selon le statut tabagique. À première vue, cette variable semble utile pour discriminer les classes. Toutefois, nous avons suspecté un biais de confusion, en particulier avec la variable <strong>sexe</strong>, les hommes étant statistiquement plus grands et également plus susceptibles de fumer dans certains contextes. L'analyse de la corrélation (Pearson) a révélé une forte association entre la taille et le poids (r = 0.68), ce qui est logique sur le plan physiologique. Par ailleurs, le VIF (Variance Inflation Factor) élevé de la variable taille a confirmé un risque de multicolinéarité dans nos modèles. En conséquence, nous avons décidé de <strong>supprimer la variable taille</strong> pour éviter à la fois la redondance et les biais de confusion. </p> 
-<p align="justify"> Par ailleurs, une analyse de variance (ANOVA) a été conduite pour tester les différences moyennes entre fumeurs et non-fumeurs pour chaque variable continue. Les résultats indiquent que l’ensemble des variables analysées présentent des <strong>p-values significatives</strong>, suggérant des différences statistiquement robustes entre les deux groupes. </p>
+<p align="justify"> De plus, une analyse de variance (ANOVA) a été conduite pour tester les différences moyennes entre fumeurs et non-fumeurs pour chaque variable continue. Les résultats indiquent que l’ensemble des variables analysées présentent des <strong>p-values significatives</strong>, suggérant des différences statistiquement robustes entre les deux groupes. </p>
+<p align="justify">
+Par ailleurs, la variable <strong>taille</strong> présente une différence notable selon le statut tabagique et semble discriminante. Toutefois, sa forte corrélation avec le <strong>poids</strong> (r = 0.68) suggère une redondance. Bien que le VIF du poids reste modéré (~6), il indique une certaine multicolinéarité. Le poids étant plus pertinent cliniquement, nous avons choisi de <strong>supprimer la taille</strong> pour éviter la redondance et limiter les biais potentiels liés au sexe.
+</p>
+
 
 #### b) cible et prédicteurs qualitatifs
 
-<p align="justify"> Nous avons également exploré les associations entre la variable cible et les prédicteurs qualitatifs. Les diagrammes en barres (<strong>Figure X</strong>) mettent en évidence des tendances marquées : les fumeurs sont plus nombreux à présenter du tartre et des caries dentaires, et la majorité des fumeurs sont des hommes. Ces éléments pourraient refléter des comportements ou des facteurs sociaux liés au tabagisme. </p> <p align="justify"> Ces observations visuelles ont été confirmées par un <strong>test du chi²</strong>, réalisé pour chacune des variables catégorielles. Les résultats révèlent que les variables <em>sex, dental_caries, tartar, pb_hearing (gauche et droite), urine_protein</em> présentent toutes des <strong>p-values significatives</strong>, confirmant l’existence de dépendances entre ces variables et le statut tabagique. Elles pourront donc être considérées comme prédicteurs pertinents dans la phase de modélisation. </p>
+<p align="justify"> Nous avons également exploré les associations entre la variable cible et les prédicteurs qualitatifs (<strong>Figure 4</strong>) : </p>
+  
+<p align="center"><u>Figure 4 : Distribution des variables qualitatives en fonction de la variable cible</u></p>
 
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_ciblequali.png" alt="Graphique des variables qualitatives avec cible">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+  
+  
+ <p align="justify"> Les diagrammes en barres mettent en évidence des tendances marquées : les fumeurs sont plus nombreux à présenter du tartre et des caries dentaires, et la majorité des fumeurs sont des hommes. Ces éléments pourraient refléter des comportements ou des facteurs sociaux liés au tabagisme. </p> <p align="justify"> Ces observations visuelles ont été confirmées par un <strong>test du chi²</strong>, réalisé pour chacune des variables catégorielles. Les résultats révèlent que les variables <em>sex, dental_caries, tartar, pb_hearing (gauche et droite), urine_protein</em> présentent toutes des <strong>p-values significatives</strong>, confirmant l’existence de dépendances entre ces variables et le statut tabagique. Elles pourront donc être considérées comme prédicteurs pertinents dans la phase de modélisation. </p>
 
 ### 2. Etude des corrélations
 
-<p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles. À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a confirmé ces dépendances : <ul> <li>Poids et tour de taille : r = 0.82</li> <li>Tension systolique et diastolique : r = 0.76</li> <li>LDL et cholestérol total : r = 0.74</li> <li>AST et ALT : r = 0.74</li> <li>Taille et poids : r = 0.68</li> </ul> </p> <p align="justify"> Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionne sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
+<p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles (<strong>Figure 4</strong>) : </p>
 
+<p align="center"><u>Figure 5 : Corrélations entre les variables quantitatives</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/corr.png" alt="Corrélations">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+  
+ <p align="justify"> À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionne sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
 
 ### 3. Lien entre les variables qualitatives
 
-<p align="justify"> Enfin, nous avons étudié les liens entre variables qualitatives à l’aide de tests du chi² sur toutes les paires de variables. Plusieurs associations significatives ont été détectées, indiquant que certaines variables partagent une information redondante. </p> <p align="justify"> Un exemple particulier concerne les variables <strong>pb_hearing (left)</strong> et <strong>pb_hearing (right)</strong>, qui sont fortement liées. Toutefois, une analyse plus fine a montré que les modalités diffèrent pour 1 107 individus, ce qui justifie la <strong>conservation des deux variables</strong> dans l’analyse, du moins dans un premier temps. </p>
+<p align="justify"> Enfin, nous avons étudié les liens entre variables qualitatives à l’aide de tests du chi² sur toutes les paires de variables. Plusieurs associations significatives ont été détectées, indiquant que certaines variables partagent une information redondante. </p> 
+<p align="justify"> Un exemple particulier concerne les variables <strong>pb_hearing (left)</strong> et <strong>pb_hearing (right)</strong>, qui sont fortement liées. Toutefois, une analyse plus fine a montré que les modalités diffèrent pour 1 107 individus, ce qui justifie la <strong>conservation des deux variables</strong> dans l’analyse, du moins dans un premier temps. </p>
 
 <p align="justify"> Finalement, de manière générale, nous avons choisi de <strong>conserver l’ensemble des variables</strong> à ce stade, afin de ne pas écarter prématurément des informations potentiellement utiles. Une <strong>sélection de variables</strong> (via des méthodes automatiques ou empiriques) sera envisagée ultérieurement dans la phase de modélisation, pour optimiser la performance et la robustesse de nos modèles. </p>
 
