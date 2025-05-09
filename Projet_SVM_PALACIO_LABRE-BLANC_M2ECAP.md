@@ -506,17 +506,50 @@ Nous proposons tout d'abord une analyse globale de son fonctionnement afin d’i
 
 ## A. Interprétation globale
 
-Partial dependance plot : Effet marginal d'une variable (qualitative ou quantitvative) sur la target
-
-Accumulated Local Effect : Effet marginal d'une variable par interval sur la target (quanti)
-
-Feature Interaction (H-statistic) : Quantifie les effets joints des variables
-
-Feature Importance : Mesure l'effet d'une feature sur la fonction de perte
-
 ### 1) Importance des variables
 
+<p align="justify">
+
+Le graphique représentant l’importance des variables issu du modèle Gradient Boosting avec undersampling permet de visualiser quelles caractéristiques ont le plus contribué à la prédiction du statut de fumeur. Cette importance ne reflète pas la direction de l'effet (positive ou négative), mais indique dans quelle mesure chaque variable a été utilisée par le modèle pour améliorer sa capacité de prédiction. Donc, plus une variable a une importance élevée, plus elle a été jugée utile pour différencier les fumeurs des non-fumeurs dans les arbres de décision constituant le modèle (<strong>Figure 6</strong>).</p>
+
+<p align="center"> <u>Figure 6 : Importance des variables dans la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/features_importance.png" alt="Importance">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
+<p align="justify">
+Les résultats montrent que la variable la plus influente est le sexe, de très loin, ce qui souligne un lien fort entre genre et comportement tabagique dans l’échantillon étudié. D’autres variables biologiques importantes émergent, comme la gamma-glutamyl transpeptidase (Gtp), les triglycérides, les enzymes hépatiques (ALT, AST), ou encore l’hémoglobine, suggérant que le tabagisme pourrait être associé à des altérations métaboliques ou hépatiques détectables dans les données cliniques. Des facteurs liés à la santé bucco-dentaire (dental_caries, tartar) apparaissent également comme discriminants. À l’inverse, certaines variables comme les troubles de l’audition, la vision, ou la protéinurie (Urine_protein) semblent avoir une importance négligeable.</p>
+
 ### 2) Partial Dependence Plots - PDP
+
+<p align="justify">
+Nous allons à présent nous intéresser aux Partial Dependence Plots (PDP), en focalisant notre attention sur les variables identifiées comme les plus importantes par le modèle de Gradient Boosting avec undersampling. Le but de cette visualisation est de mieux comprendre comment chaque variable influence, en moyenne, la prédiction du modèle, toutes choses égales par ailleurs.</p>
+
+<p align="justify">
+Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes ((<strong>Figure 7</strong>). </p>
+
+<p align="center"> <u>Figure 7 : Partial dépendence plot (PDP) de la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdp.png" alt="Importance">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
+<p align="justify">
+L’analyse des PDP révèle que une augmentation de la variable GTP est fortement associée à une augmentation de la probabilité d’être fumeur. Le GTP est une enzyme hépatique dont le taux augmente fréquemment en cas de consommation chronique d’alcool, une habitude souvent corrélée au tabagisme. De nombreuses études mettent en évidence que les personnes fumeuses ont aussi une consommation d’alcool plus élevée en moyenne, ce qui peut expliquer cette relation indirecte mais robuste entre GTP et statut tabagique.</p>
+
+<p align="justify">
+Concernant l’âge, le modèle identifie une probabilité plus élevée d’être fumeur dans les tranches d’âge jeunes à moyennes, avec une baisse progressive au-delà d’un certain seuil. Ce comportement est cohérent avec les tendances épidémiologiques observées, où les jeunes adultes et les personnes d’âge moyen affichent une prévalence plus élevée du tabagisme, tandis qu’une partie des individus plus âgés a tendance à arrêter ou réduire leur consommation, notamment pour des raisons de santé.</p>
+
+<p align="justify">
+Les triglycérides montrent également une relation croissante avec la probabilité de fumer. Cela est biologiquement plausible, car le tabagisme est reconnu pour favoriser un profil lipidique perturbé, en augmentant notamment les triglycérides et en réduisant le HDL.</p>
+
+<p align="justify">
+Enfin, l'augmentation des enzymes hépatiques ALT et AST est associée à une légère baisse de la probabilité prédite d'être fumeur. Bien que cette relation puisse sembler contre-intuitive, elle pourrait refléter des effets indirects : ces enzymes peuvent être élevées dans certaines pathologies pour lesquelles les individus sont médicalement suivis, incités à adopter un mode de vie plus sain ou à arrêter de fumer.</p>
 
 ### 3) Permutation features importance
 
