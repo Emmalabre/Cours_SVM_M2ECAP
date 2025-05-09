@@ -554,7 +554,7 @@ Les triglycérides montrent également une relation croissante avec la probabili
 Enfin, l'augmentation des enzymes hépatiques ALT et AST est associée à une légère baisse de la probabilité prédite d'être fumeur. Bien que cette relation puisse sembler contre-intuitive, elle pourrait refléter des effets indirects : ces enzymes peuvent être élevées dans certaines pathologies pour lesquelles les individus sont médicalement suivis, incités à adopter un mode de vie plus sain ou à arrêter de fumer.</p>
 
 <p align="justify">
-Nous avons également généré des PDP à partir des données non standardisées afin d’identifier les niveaux de rupture dans les relations (<strong>Figure 7</strong>). </p>
+Nous avons également généré des PDP à partir des données non standardisées afin d’identifier les niveaux de rupture dans les relations (<strong>Figure 8</strong>). </p>
 
 <p align="center"> <u>Figure 8 : Partial dépendence plot (PDP) des variables quantitatives de la modélisation Gradient Boosting avec resample </p>
 
@@ -582,6 +582,14 @@ Concernant la variable qualitative identifiée comme la plus importante, selon c
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 ### 3) Permutation features importance
+
+<p align="center"> <u>Figure 9 : Permutation features importance de la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/permutation.png" alt="Importance">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 ### 4) Effets joints entre les variables
 
