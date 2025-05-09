@@ -488,7 +488,7 @@ Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non
 | Gradient Boosting - Sans optimisation              | 0.715467 | 0.689187 | 0.763551 | 0.664769  | / |
 | Gradient Boosting - GridSearch seul              | 0.714548 | 0.688404 | 0.762990 | 0.664105  | {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__n_estimators': 100} |
 | Gradient Boosting - GridSearch seul + sélection   | 0.713016 |0.686017 | 0.760857 | 0.660988  | {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__n_estimators': 100} |
-| Gradient Boosting - Undersampling seul           | 0.891884 | 0.720168 | 0.746044 | 0.603899  | default                                                                      |
+| <strong>Gradient Boosting - Undersampling seul </strong>          | <strong>0.891884</strong> | <strong>0.720168</strong> | <strong>0.746044</strong> | <strong>0.603899</strong>  | <strong>default                                                          </strong>            |
 | Gradient Boosting - Undersampling seul + sélection  | 0.715773 |0.689584 | 0.763887 | 0.665243  | default                                                                      |
 | Gradient Boosting - GridSearch + Undersampling   | 0.913936 | 0.715931 | 0.734261 | 0.588444  | {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__n_estimators': 100} |
 | Gradient Boosting -  GridSearch + Undersampling + sélection      | 0.715161 | 0.685354 | 0.759398 | 0.657932  | {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}                |
