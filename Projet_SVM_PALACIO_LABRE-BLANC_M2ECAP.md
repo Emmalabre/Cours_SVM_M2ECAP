@@ -529,11 +529,11 @@ Les résultats montrent que la variable la plus influente est le sexe, de très 
 Nous allons à présent nous intéresser aux Partial Dependence Plots (PDP), en focalisant notre attention sur les variables identifiées comme les plus importantes par le modèle de Gradient Boosting avec undersampling. Le but de cette visualisation est de mieux comprendre comment chaque variable influence, en moyenne, la prédiction du modèle, toutes choses égales par ailleurs.</p>
 
 <p align="justify">
-Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes ((<strong>Figure 7</strong>). </p>
+Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes (<strong>Figure 7</strong>). </p>
 
 #### a) PDP des variables quantitatives
 
-<p align="center"> <u>Figure 7 : Partial dépendence plot (PDP) de la modélisation Gradient Boosting avec resample </p>
+<p align="center"> <u>Figure 7 : Partial dépendence plot (PDP) des variables quantitatives de la modélisation Gradient Boosting avec resample </p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdp.png" alt="Importance">
@@ -553,7 +553,18 @@ Les triglycérides montrent également une relation croissante avec la probabili
 <p align="justify">
 Enfin, l'augmentation des enzymes hépatiques ALT et AST est associée à une légère baisse de la probabilité prédite d'être fumeur. Bien que cette relation puisse sembler contre-intuitive, elle pourrait refléter des effets indirects : ces enzymes peuvent être élevées dans certaines pathologies pour lesquelles les individus sont médicalement suivis, incités à adopter un mode de vie plus sain ou à arrêter de fumer.</p>
 
-#### b) PDP des variables qualitatives
+#### b) PDP de la variable qualitative 
+
+<p align="justify">
+Concernant la variable qualitative identifiée comme la plus importante, selon ce PDP (<strong>Figure 8</strong>), on constate que le fait d’être un homme augmente significativement la probabilité prédite de fumer, tandis qu’être une femme la diminue. Autrement dit, toutes choses égales par ailleurs, le modèle estime qu’un homme a plus de chances d’être fumeur qu’une femme. Cette observation est cohérente avec de nombreuses données épidémiologiques : dans plusieurs pays, et notamment en population adulte, les taux de tabagisme sont plus élevés chez les hommes que chez les femmes. Cela peut s’expliquer par des facteurs sociaux et culturels, comme des différences dans les normes comportementales, une exposition plus fréquente à certains environnements propices au tabagisme (par exemple, certains milieux professionnels), ou encore des stratégies de gestion du stress qui varient selon le genre. </p>
+
+<p align="center"> <u>Figure 8 : Partial dépendence plot (PDP) de la variable homme de la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdp2.png" alt="Importance">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 ### 3) Permutation features importance
 
