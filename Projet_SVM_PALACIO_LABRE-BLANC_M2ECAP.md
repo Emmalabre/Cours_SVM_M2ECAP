@@ -531,6 +531,8 @@ Nous allons à présent nous intéresser aux Partial Dependence Plots (PDP), en 
 <p align="justify">
 Les PDP permettent ainsi de représenter la relation marginale entre une variable et la probabilité prédite d’être fumeur. Chaque courbe montre alors comment le modèle ajuste sa prédiction moyenne en fonction d'une seule variable, en conservant les autres constantes ((<strong>Figure 7</strong>). </p>
 
+#### a) PDP des variables quantitatives
+
 <p align="center"> <u>Figure 7 : Partial dépendence plot (PDP) de la modélisation Gradient Boosting avec resample </p>
 
 <p align="center">
@@ -551,7 +553,11 @@ Les triglycérides montrent également une relation croissante avec la probabili
 <p align="justify">
 Enfin, l'augmentation des enzymes hépatiques ALT et AST est associée à une légère baisse de la probabilité prédite d'être fumeur. Bien que cette relation puisse sembler contre-intuitive, elle pourrait refléter des effets indirects : ces enzymes peuvent être élevées dans certaines pathologies pour lesquelles les individus sont médicalement suivis, incités à adopter un mode de vie plus sain ou à arrêter de fumer.</p>
 
+#### b) PDP des variables qualitatives
+
 ### 3) Permutation features importance
+
+### 4) Effets joints entre les variables
 
 ## B. Interprétation locale
 
