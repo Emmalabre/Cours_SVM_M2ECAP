@@ -195,17 +195,41 @@ Nous procéderons donc, dans un premier temps, à l’entraînement des modèles
 
 <p align="justify">Voici les principales observations : </p>
 
-<strong>Caractéristiques anthropométriques</strong>
+<p align="justify"><strong>Caractéristiques anthropométriques</strong></p>
 <p align="justify"> L’âge moyen des individus est de 44 ans, avec une population allant de 20 à plus de 85 ans, ce qui constitue un échantillon adulte assez large. La taille moyenne est d’environ 1m65, pour un poids moyen de 66 kg. Le tour de taille moyen s’élève à 82 cm. </p>
-<strong>Systèmes cardiovasculaire et visuel</strong>
+<p align="justify"><strong>Systèmes cardiovasculaire et visuel</strong></p>
 <p align="justify"> La tension artérielle moyenne est de 121,5 mmHg en systolique et 76 mmHg en diastolique. Toutefois, quelques valeurs aberrantes ont été relevées, comme une systolique à 240 mmHg ou une diastolique à 146 mmHg, probablement issues d’erreurs de saisie. L’acuité visuelle moyenne est proche de 1.0 pour chaque œil, mais certaines valeurs très élevées (jusqu’à 9.9) indiquent une cécité. </p>
-<strong>Variables biologiques (métaboliques)</strong>
+<p align="justify"><strong>Variables biologiques (métaboliques)</strong></p>
 <p align="justify"> La glycémie à jeun est en moyenne de 99 mg/dL, suggérant une population globalement saine. Toutefois, certaines valeurs très élevées (jusqu’à 505 mg/dL) sont préoccupantes et pourraient signaler des cas sévères de diabète non contrôlé. Le cholestérol total est en moyenne de 197 mg/dL, tandis que les triglycérides atteignent une moyenne de 127 mg/dL, avec une distribution très asymétrique (jusqu’à 999 mg/dL). </p> <p align="justify"> Le HDL (bon cholestérol) affiche une moyenne de 57 mg/dL, mais une valeur maximale incohérente à 618 mg/dL a été relevée. Le LDL (mauvais cholestérol), quant à lui, est en moyenne à 115 mg/dL, mais présente aussi une valeur extrême à 1860 mg/dL, vraisemblablement due à une erreur d’unité ou de saisie. </p>
-<strong>Marqueurs cliniques (sang, foie, reins)</strong>
-<p align="justify"> L’hémoglobine a une moyenne de 14,6 g/dL, avec des extrêmes allant de 4,9 à 21,1 g/dL. La créatinine sérique, indicateur de la fonction rénale, est en moyenne à 0,89 mg/dL, mais atteint un maximum de 11,6 mg/dL, ce qui est fortement suspect sans contexte clinique particulier. </p> <p align="justify"> Les enzymes hépatiques AST, ALT et GTP présentent des moyennes situées dans les plages normales (entre 26 et 40 UI/L). Cependant, certaines valeurs sont exceptionnellement élevées : 2914 UI/L pour l’ALT, 999 UI/L pour le GTP, et 1311 UI/L pour l’AST. Bien que rares, ces cas pourraient s’expliquer par des pathologies sévères (hépatites, intoxications, etc.)</p>
+<p align="justify"><strong>Marqueurs cliniques (sang, foie, reins)</strong></p>
+<p align="justify"> L’hémoglobine a une moyenne de 14,6 g/dL, avec des extrêmes allant de 4,9 à 21,1 g/dL. La créatinine sérique, indicateur de la fonction rénale, est en moyenne à 0,89 mg/dL, mais atteint un maximum de 11,6 mg/dL, ce qui est fortement suspect sans contexte clinique particulier. </p> 
+<p align="justify"> Les enzymes hépatiques AST, ALT et GTP présentent des moyennes situées dans les plages normales (entre 26 et 40 UI/L). Cependant, certaines valeurs sont exceptionnellement élevées : 2914 UI/L pour l’ALT, 999 UI/L pour le GTP, et 1311 UI/L pour l’AST. Bien que rares, ces cas pourraient s’expliquer par des pathologies sévères (hépatites, intoxications, etc.)</p>
 
 <p align="justify">
-Ainsi, comme nous l'avons constater, plusieurs variables présentent des valeurs aberrantes ou extrêmes, parfois très éloignées des plages physiologiques normales. Ce qui a été confirmé par le test des valeurs atypiques IQR (Un point est considéré comme un outlier s’il se situe en dehors de l’intervalle [Q1 - 1.5×IQR ; Q3 + 1.5×IQR]). Un traitement spécifique sera donc appliqué lors de la phase de modélisation afin d’atténuer leur impact sans altérer la structure globale des données.
+Ainsi, comme nous l'avons constater, plusieurs variables présentent des valeurs aberrantes ou extrêmes, parfois très éloignées des plages physiologiques normales. Cela a été confirmé par le test des valeurs atypiques IQR (Un point est considéré comme un outlier s’il se situe en dehors de l’intervalle [Q1 - 1.5×IQR ; Q3 + 1.5×IQR])(<strong>Tableau 3</strong>).</p>
+
+<p align="center"> <u>Tableau 3 : Outliers selon la méthode IQR </u></p>
+
+<div align="center">
+
+
+| Variable        | Outliers | Variable      | Outliers |
+|--------------------------|----------|--------------------------|----------|
+| age                      | 245      |Cholesterol               | 487      |
+| height(cm)               | 203      | triglyceride              | 1802
+| weight(kg)               | 160      |       HDL                       | 802   
+| waist(cm)                | 414      |   LDL                       | 515
+| eyesight(left)           | 1085     |       hemoglobin                | 616 
+| eyesight(right)          | 1084     |      serum_creatinine          | 2535
+| systolic                 | 555      |      AST                       | 2385 
+| relaxation               | 565      |     ALT                       | 2979   
+| fasting_blood_sugar      | 2657     |   Gtp                       | 3838 
+</div> 
+
+ <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+  
+<p align="justify">
+  Un traitement spécifique sera donc appliqué lors de la phase de modélisation afin d’atténuer leur impact sans altérer la structure globale des données.
 </p>
 
 ### 3. Prédicteurs qualitatifs
@@ -222,7 +246,7 @@ Ainsi, comme nous l'avons constater, plusieurs variables présentent des valeurs
   
   
   
-<p align="justify">Cette analyse met en évidence plusieurs déséquilibres : </p> <ul> <li>64 % des individus de la base de données sont des hommes, indiquant une surreprésentation masculine.</li> <li>Il y a 37 % de fumeurs, comme vu précédemment.</li> <li>21 % de la population présentent des caries dentaires, tandis que 55 % a du tartre.</li> <li>Les troubles auditifs sont rares : environ 2,6 % pour chaque oreille.</li> <li>La variable <strong>Urine_protein</strong> est très déséquilibrée : plus de 94 % des individus sont au niveau 1.0, indiquant l’absence de protéinurie. Les niveaux supérieurs (jusqu’à 6.0) sont rares mais peuvent avoir une forte signification clinique.</li> </ul> </p>
+<p align="justify">Cette analyse met en évidence plusieurs déséquilibres : </p> <ul> <li>64 % des individus de la base de données sont des hommes, indiquant une surreprésentation masculine.</li> <li>Il y a 37 % de fumeurs, comme vu précédemment.</li> <li>21 % de la population présentent des caries dentaires, tandis que 55 % a du tartre.</li> <li>Les troubles auditifs sont rares : environ 2,6 % pour chaque oreille.</li> <li>La variable Urine_protein est très déséquilibrée : plus de 94 % des individus sont au niveau 1.0, indiquant l’absence de protéinurie. Les niveaux supérieurs (jusqu’à 6.0) sont rares mais peuvent avoir une forte signification clinique.</li> </ul> </p>
 
 <p align="justify">Cette analyse descriptive nous a permis de mieux comprendre la structure et les caractéristiques de notre jeu de données.
 Elle révèle une population adulte majoritairement masculine, une proportion significative de fumeurs, et quelques variables présentant des valeurs extrêmes ou déséquilibrées.</p>
@@ -236,9 +260,9 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 #### a) Liens entre la variable cible et les prédicteurs quantitatifs
 
-<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong>) .</p>
+<p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 4</strong>) .</p>
 
-<p align="center"><u>Tableau 3 : Moyenne des variables quantitatives en fonction de la variable cible</u></p>
+<p align="center"><u>Tableau 4 : Moyenne des variables quantitatives en fonction de la variable cible</u></p>
 
 <div align="center">
 
@@ -268,9 +292,9 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 <p align="justify">Les fumeurs sont, en moyenne, plus jeunes, mais aussi plus grands, plus lourds et présentent un tour de taille plus élevé — des caractéristiques probablement liées à une surreprésentation masculine dans ce groupe. Leur tension artérielle (systolique et diastolique) est légèrement plus élevée, en lien avec les effets vasoconstricteurs de la nicotine, et leur glycémie à jeun tend à être supérieure, ce qui peut indiquer un risque accru de troubles métaboliques. Paradoxalement, leur cholestérol total est légèrement inférieur à celui des non-fumeurs. Toutefois, cette différence masque une baisse du HDL (le bon cholestérol), ce qui n’indique pas nécessairement un meilleur profil lipidique. En effet, un HDL plus bas est associé à un risque cardiovasculaire accru, et peut déséquilibrer le rapport LDL/HDL. Enfin, l'acuité visuelle moyenne des fumeurs apparaît légèrement meilleure. Ce résultat, contre-intuitif, pourrait s’expliquer par une différence d’âge : les fumeurs de l’échantillon étant en moyenne plus jeunes, ils sont naturellement moins touchés par la presbytie ou d'autres troubles visuels liés à l’âge.</p>
 <p align="justify">Ces écarts suggèrent une association entre le statut tabagique et certaines caractéristiques physiologiques, cohérente avec les effets connus du tabac sur la santé métabolique et cardiovasculaire. </p> 
-<p align="justify"> De plus, une analyse de variance (ANOVA) a été conduite pour tester les différences moyennes entre fumeurs et non-fumeurs pour chaque variable continue. Les résultats indiquent que l’ensemble des variables analysées présentent des <strong>p-values significatives</strong>, suggérant des différences statistiquement robustes entre les deux groupes. </p>
+<p align="justify"> De plus, une analyse de variance (ANOVA) a été conduite pour tester les différences moyennes entre fumeurs et non-fumeurs pour chaque variable continue. Les résultats indiquent que l’ensemble des variables analysées présentent des p-values significatives, suggérant des différences statistiquement robustes entre les deux groupes. </p>
 <p align="justify">
-Par ailleurs, la variable <strong>taille</strong> présente une différence notable selon le statut tabagique et semble discriminante. Toutefois, sa forte corrélation avec le <strong>poids</strong> (r = 0.68) suggère une redondance. Bien que le VIF du poids reste modéré (~6), il indique une certaine multicolinéarité. Le poids étant plus pertinent cliniquement, nous avons choisi de <strong>supprimer la taille</strong> pour éviter la redondance et limiter les biais potentiels liés au sexe.
+Par ailleurs, la variable taille présente une différence notable selon le statut tabagique et semble discriminante. Toutefois, sa forte corrélation avec le poids (r = 0.68) suggère une redondance. Bien que le VIF du poids reste modéré (~6), il indique une certaine multicolinéarité. Le poids étant plus pertinent cliniquement, nous avons choisi de supprimer la taille pour éviter la redondance et limiter les biais potentiels liés au sexe.
 </p>
 
 
@@ -287,13 +311,13 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
   
   
- <p align="justify"> Les diagrammes en barres mettent en évidence des tendances marquées : les fumeurs sont plus nombreux à présenter du tartre et des caries dentaires, et la majorité des fumeurs sont des hommes. Ces éléments pourraient refléter des comportements ou des facteurs sociaux liés au tabagisme. </p> <p align="justify"> Ces observations visuelles ont été confirmées par un <strong>test du chi²</strong>, réalisé pour chacune des variables catégorielles. Les résultats révèlent que les variables <em>sex, dental_caries, tartar, pb_hearing (gauche et droite), urine_protein</em> présentent toutes des <strong>p-values significatives</strong>, confirmant l’existence de dépendances entre ces variables et le statut tabagique. Elles pourront donc être considérées comme prédicteurs pertinents dans la phase de modélisation. </p>
+ <p align="justify"> Les diagrammes en barres mettent en évidence des tendances marquées : les fumeurs sont plus nombreux à présenter du tartre et des caries dentaires, et la majorité des fumeurs sont des hommes. Ces éléments pourraient refléter des comportements ou des facteurs sociaux liés au tabagisme. </p> <p align="justify"> Ces observations visuelles ont été confirmées par un test du chi², réalisé pour chacune des variables catégorielles. Les résultats révèlent que les variables <em>sex, dental_caries, tartar, pb_hearing (gauche et droite), urine_protein</em> présentent toutes des p-values significatives, confirmant l’existence de dépendances entre ces variables et le statut tabagique. Elles pourront donc être considérées comme prédicteurs pertinents dans la phase de modélisation. </p>
 
 ### 2. Etude des corrélations
 
 <p align="justify"> L’analyse des corrélations entre variables continues nous a permis d’identifier des redondances potentielles (<strong>Figure 5</strong>) : </p>
 
-<p align="center"> <u>Figure 5 : Corrélations entre les variables quantitatives</u> </p>
+<p align="center"> <u>Figure 5 : Corrélations (Spearman) entre les variables quantitatives</u> </p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/corr.png" alt="Corrélations">
@@ -301,14 +325,14 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
   
- <p align="justify"> À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionnent sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
+ <p align="justify"> À partir de la matrice de corrélation de Spearman, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure 5</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de corrélation de Pearson, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionnent sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
 
 ### 3. Liens entre les variables qualitatives
 
 <p align="justify"> Enfin, nous avons étudié les liens entre variables qualitatives à l’aide de tests du chi² sur toutes les paires de variables. Plusieurs associations significatives ont été détectées, indiquant que certaines variables partagent une information redondante. </p> 
-<p align="justify"> Un exemple particulier concerne les variables <strong>pb_hearing (left)</strong> et <strong>pb_hearing (right)</strong>, qui sont fortement liées. Toutefois, une analyse plus fine a montré que les modalités diffèrent pour 1 107 individus, ce qui justifie la <strong>conservation des deux variables</strong> dans l’analyse, du moins dans un premier temps. </p>
+<p align="justify"> Un exemple particulier concerne les variables <strong>pb_hearing (left)</strong> et <strong>pb_hearing (right)</strong>, qui sont fortement liées. Toutefois, une analyse plus fine a montré que les modalités diffèrent pour 1 107 individus, ce qui justifie la conservation des deux variables dans l’analyse, du moins dans un premier temps. </p>
 
-<p align="justify"> Finalement, de manière générale, nous avons choisi de <strong>conserver l’ensemble des variables</strong> à ce stade, afin de ne pas écarter prématurément des informations potentiellement utiles. Une <strong>sélection de variables</strong> (via des méthodes automatiques ou empiriques) sera envisagée ultérieurement dans la phase de modélisation, pour optimiser la performance et la robustesse de nos modèles. </p>
+<p align="justify"> Finalement, de manière générale, nous avons choisi de conserver l’ensemble des variables à ce stade, afin de ne pas écarter prématurément des informations potentiellement utiles. Une sélection de variables (via des méthodes automatiques ou empiriques) sera envisagée ultérieurement dans la phase de modélisation, pour optimiser la performance et la robustesse de nos modèles. </p>
 
 
 # II. Phase préparatoire et modélisations
@@ -347,17 +371,17 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 <p align="justify"> Pour évaluer la performance de ces modèles, nous avons utilisé différentes <strong>métriques d’évaluation</strong>, mesurées à la fois : </p> <ul> <li>Sur les jeux <strong>d'entraînement</strong> et de <strong>test</strong> pour évaluer leur capacité de généralisation.</li> <li>En <strong>validation croisée (5-fold)</strong> pour estimer la robustesse et la stabilité des performances.</li> </ul> 
 <p align="justify">Les résultats ont été synthétisés sous forme de tableaux et de graphiques comparatifs.</p> <h4><u>Métriques utilisées</u> :</h4> <ul> <li><strong>Accuracy</strong> : proportion globale de bonnes prédictions (vrais positifs + vrais négatifs). Elle répond à la question : <em>« À quelle fréquence le modèle est-il correct ? »</em></li> <li><strong>Erreur (1 - accuracy)</strong> : proportion d’observations mal classées. Elle permet de mesurer l'inefficacité du modèle. Un bon modèle aura une <strong>accuracy proche de 1</strong> et une <strong>erreur proche de 0</strong>.</li> <li><strong>Précision</strong> : parmi les individus prédits comme fumeurs, quelle proportion l’est réellement ? Cette métrique est sensible aux <em>faux positifs</em>.</li> <li><strong>Rappel (Recall)</strong> : parmi les fumeurs réels, combien ont été correctement identifiés ? Cette métrique est sensible aux <em>faux négatifs</em>.</li> <li><strong>F1-score</strong> : moyenne harmonique entre précision et rappel. Elle est particulièrement utile lorsque les classes sont déséquilibrées (ce qui est modérément le cas ici). Un bon modèle affiche un <strong>F1-score élevé</strong>, proche de 1.</li> </ul> 
 <p align="justify"> L’objectif de cette évaluation multiple est de ne pas se limiter à l’accuracy, qui peut être trompeuse en cas de déséquilibre de classes, Une forte accuracy peut masquer des performances médiocres sur la classe minoritaire, pourtant essentielle à détecter dans notre étude. C’est pourquoi d’autres métriques sont mobilisées afin de mieux comprendre les compromis entre faux positifs et faux négatifs. </p>
-<p align="justify"> Ainsi, une attention particulière est portée au <strong>f1-score</strong> et au <strong>recall</strong>, car il est crucial d’<strong>identifier correctement les individus fumeurs</strong>, même au prix de quelques faux positifs. En effet, dans un contexte de prévention ou de dépistage médical, il est souvent préférable de <strong>ne pas rater un cas à risque</strong> (fumeur non détecté), quitte à déclencher des vérifications supplémentaires. C’est pourquoi le rappel sera la métrique principale utilisée pour comparer les performances des modèles. </p>
+<p align="justify"> Ainsi, une attention particulière est portée au <strong>f1-score</strong> et au <strong>recall</strong>, car il est crucial d’<strong>identifier correctement les individus fumeurs</strong>, même au prix de quelques faux positifs. En effet, dans un contexte de prévention ou de dépistage médical, il est souvent préférable de <strong>ne pas rater un cas à risque</strong> (fumeur non détecté), quitte à déclencher des vérifications supplémentaires. </p>
 
 ### 2) Modélisations avec les paramètres par défaut
 
 <p align="justify">Nous avons commencé par tester les modèles sans optimisation, avec leurs paramètres par défaut. Cela nous a permis d’identifier ceux qui étaient les plus prometteurs dans notre contexte.</p> <p>
 
 <p align="justify">
-Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (<strong>Tableau 4</strong>).
+Les résultats initiaux ont été obtenus sans validation croisée, en comparant directement les performances sur les jeux d'entraînement et de test. Cela permettait de détecter des cas de surapprentissage évident, notamment pour le modèle <strong>Random Forest</strong>, dont le F1-score chute de 0.999 sur le jeu d’entraînement à 0.677 sur le jeu de test, traduisant une très mauvaise généralisation. À l’inverse, les modèles comme le <strong>Gradient Boosting</strong> ou le <strong>LinearSVC</strong> présentent des scores cohérents entre entraînement et test, ce qui témoigne d’une meilleure robustesse (<strong>Tableau 5</strong>).
 </p>
 
-<p align="center"> <u>Tableau 4 : Performances des modèles non optimisés </u></p>
+<p align="center"> <u>Tableau 5 : Performances des modèles non optimisés </u></p>
 
 <div align="center">
 
@@ -386,14 +410,14 @@ Les résultats initiaux ont été obtenus sans validation croisée, en comparant
  <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 <p align="justify">
-Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli et les statistiques sont présentés dans le <strong>Tableau 5</strong>
+Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli et les statistiques sont présentés dans le <strong>Tableau 6</strong>
 </p>
 
-<p align="center"> <u>Tableau 5 : Performances en cross-validation des modèles non optimisés </u></p>
+<p align="center"> <u>Tableau 6 : Performances en cross-validation des modèles non optimisés </u></p>
 
 <div align="center">
 
-| Graphique F1-score | Tableau 3 – Moyenne et écart-type des F1-score |
+| Graphique F1-score | Moyenne et écart-type des F1-score |
 |-----------------------------------------------|---------------------------------------------|
 | <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/raw/main/Screenshots/graph_cv.png" width="1500"/> | <table><thead><tr><th>Modèle</th><th>Moyenne</th><th>Écart-type</th></tr></thead><tbody><tr><td>Logistic Regression</td><td>0.5791</td><td>0.0047</td></tr><tr><td>Random Forest</td><td>0.6681</td><td>0.0010</td></tr><tr><td>Gradient Boosting</td><td>0.6839</td><td>0.0034</td></tr><tr><td>SVC (RBF)</td><td>0.5184</td><td>0.0058</td></tr><tr><td>SVC (Linear)</td><td>0.6687</td><td>0.0058</td></tr><tr><td>SVC (Poly)</td><td>0.5445</td><td>0.0072</td></tr><tr><td>LinearSVC</td><td>0.6699</td><td>0.0063</td></tr><tr><td>SGDClassifier</td><td>0.1947</td><td>0.2478</td></tr></tbody></table> |
 </div> 
@@ -402,7 +426,7 @@ Pour affiner cette analyse, une <strong>validation croisée à 5 plis</strong> a
 
 
 <p align="justify">
-Le <strong>Gradient Boosting</strong> est le modèle le plus performant en validation croisée, avec un F1-score moyen de <strong>0.684</strong> et une variance très faible, ce qui témoigne de sa stabilité. Il surpasse même le Random Forest et LinearSVC sur cette base. Le <strong>SGDClassifier</strong>, en revanche, affiche un F1-score moyen de seulement 0.195 avec un écart-type extrêmement élevé de 0.25, montrant une <strong>grande instabilité</strong> et des performances peu fiables.
+Le <strong>Gradient Boosting</strong> est le modèle le plus performant en validation croisée, avec un F1-score moyen de <strong>0.684</strong> et une variance très faible, ce qui témoigne de sa stabilité. Il surpasse même le Random Forest et LinearSVC sur cette base. Le <strong>SGDClassifier</strong>, en revanche, affiche un F1-score moyen de seulement 0.195 avec un écart-type extrêmement élevé de 0.25, montrant une grande instabilité et des performances peu fiables.
 </p>
 
 <p align="justify">
@@ -447,10 +471,10 @@ Ce choix reste toutefois contextuel : en dépistage ou prévention précoce, ce 
 </p>
 
 <p align="justify">
-Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non optimisés sont présentées dans le tableau ci-dessous (<strong>Tableau 6</strong>).
+Les performances des modèles LinearSVC et Gradient Boosting,  optimisés et non optimisés sont présentées dans le tableau ci-dessous (<strong>Tableau 7</strong>).
 </p>
 
-<p align="center"> <u>Tableau 6 : Performances des différents modèles </u></p>
+<p align="center"> <u>Tableau 7 : Performances des différents modèles </u></p>
 
 <div align="center">
 
