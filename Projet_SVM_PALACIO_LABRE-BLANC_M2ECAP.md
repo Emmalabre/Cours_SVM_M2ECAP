@@ -136,7 +136,7 @@ Nous débutons par l’analyse de la variable cible : le statut tabagique des in
 <p align="center"><u>Figure n°3 : Distribution de la variable cible</u></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Emmalabre/Cours_SVM_M2ECAP/main/Screenshots/graph_smoking.png" alt="Graphique de la variable cible">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_smoking.png" alt="Graphique de la variable cible">
 </p>
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
