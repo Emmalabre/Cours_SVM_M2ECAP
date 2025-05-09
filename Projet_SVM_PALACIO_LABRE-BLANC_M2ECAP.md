@@ -59,10 +59,10 @@ Afin de garantir la confidentialité, les données personnelles sensibles ont é
 <a href="https://www.kaggle.com/datasets/kukuroo3/body-signal-of-smoking/data">Kaggle - Body Signal of Smoking</a>. 
 Cet échantillon permet de poser un problème de classification binaire : prédire si une personne fume (1 = non fumeur, 2 = fumeur) à partir de données biologiques et cliniques.</p>
 
-<p align="justify">Le jeu de données contient 27 variables et 55 692 observations. Le tableau ci-dessous permet d'en avoir un aperçu : </p>
+<p align="justify">Le jeu de données contient 27 variables et 55 692 observations. Le tableau ci-dessous (Tableau 1) permet d'en avoir un aperçu : </p>
 
 
-<p align="center"> <u>Table N°1 : Tableau présentant les variables </u></p>
+<p align="center"> <u>Tableau N°1 : Tableau présentant les variables </u></p>
 
 <div align="center">
 
@@ -133,7 +133,7 @@ Cet échantillon permet de poser un problème de classification binaire : prédi
 <p align="justify">
 Nous débutons par l’analyse de la variable cible : le statut tabagique des individus. La distribution des classes est représentée par un histogramme (<strong>Figure 1</strong>).</p>
 
-<p align="center"><u>Figure n°3 : Distribution de la variable cible</u></p>
+<p align="center"><u>Figure n°1 : Distribution de la variable cible</u></p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_smoking.png" alt="Graphique de la variable cible">
@@ -154,9 +154,9 @@ Nous procéderons donc, dans un premier temps, à l’entraînement des modèles
 
 ### 2. Prédicteurs quantitatifs
 
-<p align="justify"> L’analyse des variables quantitatives est résumée dans le tableau des statistiques descriptives (<strong>Tableau 1</strong>) ainsi que dans les histogrammes et boxplots présentés en <strong>Figures 2 et 3</strong>.</p>
+<p align="justify"> L’analyse des variables quantitatives est résumée dans le tableau des statistiques descriptives (<strong>Tableau 2</strong>) ainsi que dans les histogrammes présentés en <strong>Figures 2</strong>.</p>
 
-<p align="center"> <u>Tableau N°1 : Statistiques descriptives des variables quantitatives </u></p>
+<p align="center"> <u>Tableau N°2 : Statistiques descriptives des variables quantitatives </u></p>
 
 <div align="center">
 
@@ -184,6 +184,15 @@ Nous procéderons donc, dans un premier temps, à l’entraînement des modèles
 
  <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
+ <p align="center"><u>Figure n°2 : Distribution des variables quantitatives</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/image2.png" alt="Graphique des variables quantitatives">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
+
 <p align="justify">Voici les principales observations : </p>
 
 <strong>Caractéristiques anthropométriques</strong>
@@ -201,7 +210,19 @@ Ainsi, comme nous l'avons constater, plusieurs variables présentent des valeurs
 
 ### 3. Prédicteurs qualitatifs
 
-<p align="justify"> La distribution des variables qualitatives a été visualisée à l’aide de diagrammes en barres (voir <strong>Figures 4 à 6</strong>). Cette analyse met en évidence plusieurs déséquilibres : </p> <ul> <li>64 % des individus de la base de données sont des hommes, indiquant une surreprésentation masculine.</li> <li>Il y a 37 % de fumeurs, comme vu précédemment.</li> <li>21 % de la population présentent des caries dentaires, tandis que 55 % a du tartre.</li> <li>Les troubles auditifs sont rares : environ 2,6 % pour chaque oreille.</li> <li>La variable <strong>Urine_protein</strong> est très déséquilibrée : plus de 94 % des individus sont au niveau 1.0, indiquant l’absence de protéinurie. Les niveaux supérieurs (jusqu’à 6.0) sont rares mais peuvent avoir une forte signification clinique.</li> </ul> <p align="justify">
+<p align="justify"> La distribution des variables qualitatives a été visualisée à l’aide de diagrammes en barres (<strong>Figure 3</strong>). </p>
+
+<p align="center"><u>Figure n°3 : Distribution des variables qualitatives</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/graph_quali.png" alt="Graphique des variables qualitatives">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+  
+  
+  
+<p align="justify">Cette analyse met en évidence plusieurs déséquilibres : </p> <ul> <li>64 % des individus de la base de données sont des hommes, indiquant une surreprésentation masculine.</li> <li>Il y a 37 % de fumeurs, comme vu précédemment.</li> <li>21 % de la population présentent des caries dentaires, tandis que 55 % a du tartre.</li> <li>Les troubles auditifs sont rares : environ 2,6 % pour chaque oreille.</li> <li>La variable <strong>Urine_protein</strong> est très déséquilibrée : plus de 94 % des individus sont au niveau 1.0, indiquant l’absence de protéinurie. Les niveaux supérieurs (jusqu’à 6.0) sont rares mais peuvent avoir une forte signification clinique.</li> </ul> </p>
 
 <p align="justify">Cette analyse descriptive nous a permis de mieux comprendre la structure et les caractéristiques de notre jeu de données.
 Elle révèle une population adulte majoritairement masculine, une proportion significative de fumeurs, et quelques variables présentant des valeurs extrêmes ou déséquilibrées.</p>
