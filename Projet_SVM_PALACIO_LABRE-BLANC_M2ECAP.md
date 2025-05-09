@@ -232,9 +232,9 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 
 <p align="justify">Nous passons maintenant à l'analyse bivarié. Nous présenterons successivement les analyses bivariées entre la variable cible et les prédicteurs quantitatifs et qualitatifs puis l'étude des corrélations entre les variables quantitatives et enfin les liens entre les variables qualitatives.</p>
 
-### 1. Variable cible et prédicteurs qualitatifs et quantitatifs
+### 1. Liens entre la variable cible et les prédicteurs qualitatifs et quantitatifs
 
-#### a) Variable cible et prédicteurs quantitatifs
+#### a) Liens entre la variable cible et les prédicteurs quantitatifs
 
 <p align="justify"> Nous avons comparé les moyennes des variables numériques entre les individus fumeurs et non-fumeurs, ce qui a permis de dégager plusieurs différences significatives (<strong>Tableau 3</strong> .</p>
 
@@ -274,7 +274,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 </p>
 
 
-#### b) Variable cible et prédicteurs qualitatifs
+#### b) Liens entre la variable cible et les prédicteurs qualitatifs
 
 <p align="justify"> Nous avons également exploré les associations entre la variable cible et les prédicteurs qualitatifs (<strong>Figure 4</strong>) : </p>
   
@@ -303,7 +303,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
   
  <p align="justify"> À partir de la <strong>matrice de corrélation de Spearman</strong>, qui tient compte des relations monotones, nous avons mis en évidence plusieurs associations fortes (ρ ≥ 0.70), illustrées en <strong>Figure Y</strong>. </p> <p align="justify"> Les principales corrélations observées sont les suivantes : <ul> <li><strong>Poids et tour de taille</strong> : ρ = 0.81 — forte corrélation attendue</li> <li><strong>Acuité visuelle gauche/droite</strong> : ρ = 0.70 — logique biométrique</li> <li><strong>Tension systolique/diastolique</strong> : ρ = 0.74 — pression artérielle intrinsèquement liée</li> <li><strong>Cholestérol total et LDL</strong> : ρ = 0.89 — le LDL étant une composante du cholestérol total</li> <li><strong>AST et ALT</strong> : ρ = 0.73 — enzymes hépatiques souvent corrélées</li> </ul> </p> <p align="justify"> L’analyse de la matrice de <strong>corrélation de Pearson</strong>, axée sur les relations linéaires, a également confirmé ces dépendances. Ces résultats nous permettent d’identifier des variables fortement liées entre elles et nous questionnent sur le besoin ou non de sélectionner des variables pour nos modélisations. Nous aborderons ce point dans la partie concernant l'optimisation des modèles.
 
-### 3. Lien entre les variables qualitatives
+### 3. Liens entre les variables qualitatives
 
 <p align="justify"> Enfin, nous avons étudié les liens entre variables qualitatives à l’aide de tests du chi² sur toutes les paires de variables. Plusieurs associations significatives ont été détectées, indiquant que certaines variables partagent une information redondante. </p> 
 <p align="justify"> Un exemple particulier concerne les variables <strong>pb_hearing (left)</strong> et <strong>pb_hearing (right)</strong>, qui sont fortement liées. Toutefois, une analyse plus fine a montré que les modalités diffèrent pour 1 107 individus, ce qui justifie la <strong>conservation des deux variables</strong> dans l’analyse, du moins dans un premier temps. </p>
@@ -560,20 +560,20 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
     - [2) Prédicteurs quantitatifs](#2-prédicteurs-quantitatifs)
     - [3) Prédicteurs qualitatifs](#3-prédicteurs-qualitatifs)
   - [C. Analyse bivariée](#c-analyse-bivariée)
-    - [1) Liens entre la variable à prédire et les prédicteurs qualitatifs](#1-Variable-cible-et-prédicteurs-qualitatifs-et-quantitatifs)
-        - [a) Variable cible et prédicteurs quantitatifs](#a-Variable-cible-et-prédicteurs-quantitatifs)
-        - [b) Variable cible et prédicteurs qualitatifs](#b-Variable-cible-et-prédicteurs-qualitatifs)
+    - [1) Liens entre la variable cible et les prédicteurs qualitatifs et quantitatifs](#1-Liens-entre-la-variable-cible-et-les-prédicteurs-qualitatifs-et-quantitatifs)
+        - [a) Liens entre la variable cible et prédicteurs quantitatifs](#a-Liens-entre-la-variable-cible-et-les-prédicteurs-quantitatifs)
+        - [b) Liens entre la variable cible et prédicteurs qualitatifs](#b-Liens-entre-la-variable-cible-et-les-prédicteurs-qualitatifs)
     - [2) Etude des corrélations](#2-etude-des-corrélations)
-    - [3) Lien entre les variables qualitatives](#3-lien-entre-les-variables-qualitatives)
+    - [3) Liens entre les variables qualitatives](#3-liens-entre-les-variables-qualitatives)
 - [II. Phase préparatoire et modélisations](#ii-Phase-préparatoire-et-modélisations)
   - [A. Préparation des variables pour la modélisation](#a-Préparation-des-variables-pour-la-modélisation)
     - [1) Séparation du jeu de données en jeux train et test](#1-Séparation-du-jeu-de-données-en-jeux-train-et-test)
-    - [2) Traitement des valeurs atypiques : winsorization](#2-Traitement-des-valeurs-atypiques-:-winsorization)
+    - [2) Traitement des valeurs atypiques : winsorization](#2-Traitement-des-valeurs-atypiques---winsorization)
     - [3) Standardisation et encodage](#3-Standardisation-et-encodage)
   - [B. Modélisations](#b-Modélisations)
     - [1) Présentation des modèles et métriques pour la comparaison](#1-Présentation-des-modèles-et-métriques-pour-la-comparaison)
     - [2) Modélisations avec les paramètres par défaut](#2-Modélisations-avec-les-paramètres-par-défaut)
-    - [3) Modélisations optimisées : Présentation des stratégies d'optimisation](#3-Modélisations-optimisées-:-Présentation-des-stratégies-d'optimisation)
+    - [3) Modélisations optimisées : Présentation des stratégies d'optimisation](#3-Modélisations-optimisées---Présentation-des-stratégies-d'optimisation)
     - [4) Choix du meilleur modèle](#4-Choix-du-meilleur-modèle)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
