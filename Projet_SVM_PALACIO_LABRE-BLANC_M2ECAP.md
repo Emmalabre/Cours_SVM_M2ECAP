@@ -19,12 +19,12 @@
 
 - [Introduction](#introduction)
 - [I. Analyse exploratoire](#i-analyse-exploratoire)
-  - [A. Présentation des données](#a-présentation-des-données)
-  - [B. Analyse univariée](#a-analyse-univariée)
-  - [C. Analyse bivariée](#b-analyse-bivariée)
-- [II. Modélisation](#ii-modélisation)
-  - [A. Préparation des variables pour la modélisation](#a-préparation-des-données)
-  - [B. Construction des modèles](#b-construction-des-modèles)
+  - [A. Présentation des données](#a-Présentation-des-données)
+  - [B. Analyse univariée](#a-Analyse-univariée)
+  - [C. Analyse bivariée](#b-Analyse-bivariée)
+- [II. Phase préparatoire et modélisations](#ii-Phase-préparatoire-et-modélisations)
+  - [A. Préparation des variables pour la modélisation](#a-Préparation-des-variables-pour-la-modélisation)
+  - [B. Modélisation](#b-Modélisations)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
   - [B. Interprétation locale](#b-interprétation-locale)
@@ -123,9 +123,9 @@ Cet échantillon permet de poser un problème de classification binaire : prédi
 <p align="justify">Enfin, deux colonnes ont été retirées du jeu de données : la colonne <strong>ID</strong>, qui ne constitue qu’un identifiant unique sans valeur informative pour l’analyse, et la colonne <strong>oral</strong>, qui ne contenait qu’une seule modalité partagée par tous les individus.</p>
 
 
-## B. Statistiques descriptives
+## B. Analyse univariée
 
-<p align="justify"> Après avoir effectué le prétraitement de nos données, nous avons procédé à une analyse des statistiques descriptives de l’ensemble des variables du jeu de données afin d'explorer les caractéristiques globales de la population étudiée, détecter d’éventuelles valeurs extrêmes, déséquilibres ou anomalies.
+<p align="justify"> Après avoir effectué le prétraitement de nos données, nous avons procédé à une analyse univariée de l’ensemble des variables du jeu de données afin d'explorer les caractéristiques globales de la population étudiée, détecter d’éventuelles valeurs extrêmes, déséquilibres ou anomalies.
 
 
 ### 1. Variable d'intérêt
@@ -315,7 +315,7 @@ Par ailleurs, la variable <strong>taille</strong> présente une différence nota
 
 <p align="justify"> Après avoir exploré les caractéristiques individuelles et les relations entre variables, nous passons désormais à la phase de modélisation. Celle-ci se déroulera en deux temps : dans un premier temps, nous appliquerons un ensemble de traitements aux variables afin de les préparer correctement à l’apprentissage automatique (encodage, mise à l’échelle, traitement des valeurs extrêmes, etc.). Ensuite, nous testerons plusieurs modèles de classification afin de comparer leurs performances et de sélectionnder le meilleur modèle. </p>
 
-## A. Préparation des données
+## A. Préparation des variables pour la modélisation
 
 ### 1) Séparation du jeu de données en jeux train et test
 
