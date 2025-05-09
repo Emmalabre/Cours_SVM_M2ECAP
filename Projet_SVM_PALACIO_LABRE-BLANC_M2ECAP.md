@@ -131,7 +131,18 @@ Cet échantillon permet de poser un problème de classification binaire : prédi
 ### 1. Variable d'intérêt
 
 <p align="justify">
-Nous débutons par l’analyse de la variable cible : le statut tabagique des individus. La distribution des classes est représentée par un histogramme (<strong>Figure 1</strong>). Ce graphique met en évidence un déséquilibre modéré : sur les 44 552 individus de l’échantillon, 16 352 sont fumeurs (soit 37 %), contre 28 200 non-fumeurs. Ainsi, environ un tiers des observations sont associées à la classe « fumeur ».
+Nous débutons par l’analyse de la variable cible : le statut tabagique des individus. La distribution des classes est représentée par un histogramme (<strong>Figure 1</strong>).</p>
+
+<p align="center"><u>Figure n°3 : Distribution de la variable cible</u></p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Emmalabre/Cours_SVM_M2ECAP/main/Screenshots/graph_smoking.png" alt="Graphique de la variable cible">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+ 
+<p align="justify">
+Ce graphique met en évidence un déséquilibre modéré : sur les 44 552 individus de l’échantillon, 16 352 sont fumeurs (soit 37 %), contre 28 200 non-fumeurs. Ainsi, environ un tiers des observations sont associées à la classe « fumeur ».
 </p>
 
 <p align="justify">
