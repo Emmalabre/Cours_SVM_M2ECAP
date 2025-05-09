@@ -436,7 +436,7 @@ Compte tenu de ces résultats, nous avons décidé de retenir uniquement les mod
 
 ### 3) Modélisations optimisées - Présentation des stratégies d optimisation
 
-<p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul> <li><strong>Recherche d’hyperparamètres</strong> (GridSearchCV)</li> <li><strong>Resampling</strong></li> <li><strong>Sélection de variables></li><li><strong>Transformations log</strong></li> </ul><li><strong>Combinaisons de ces stratégies></li>
+<p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul> <li><strong>Recherche d’hyperparamètres</strong> (GridSearchCV)</li> <li><strong>Resampling</strong></li> <li><strong>Sélection de variables</strong></li><li><strong>Transformations log</strong></li><li><strong>Combinaisons de ces stratégies</strong></li></p>
 <p align="justify">Cette approche nous permet d’évaluer si un modèle sans optimisation suffit ou si la recherche d’hyperparamètres, le resampling, la sélection de variables ou les transformations log améliorent significativement les résultats, notamment en termes de rappel.</p>
 
 <strong>Pourquoi envisager une méthode de resampling : </strong>
