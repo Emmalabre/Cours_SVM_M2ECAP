@@ -414,7 +414,7 @@ Compte tenu de ces résultats, nous avons décidé de retenir uniquement les mod
 </p>
 
 
-### 3) Modélisations optimisées - Présentation des stratégies d'optimisation
+### 3) Modélisations optimisées - Présentation des stratégies d optimisation
 
 <p align="justify">Afin d’optimiser les performances des deux modèles retenus, nous avons plusieurs stratégies :</p> <ul> <li><strong>Recherche d’hyperparamètres seule</strong> (GridSearchCV)</li> <li><strong>Resampling seul</strong></li> <li><strong>Resampling seul + GridSearchCV</strong></li> <li><strong>Sélection de variables + GridSearchCV</strong></li><li><strong>Transformations log</strong></li> </ul> 
 <p align="justify">Cette approche nous permet d’évaluer si une simple recherche d’hyperparamètres suffit ou si l’ajout de techniques comme le resampling ou la sélection de variables améliore significativement les résultats, notamment en termes de <strong>rappel</strong>.</p>
@@ -573,7 +573,7 @@ SHAP : Dérivée des shapley values avec également avec des global model agnost
   - [B. Modélisations](#b-Modélisations)
     - [1) Présentation des modèles et métriques pour la comparaison](#1-Présentation-des-modèles-et-métriques-pour-la-comparaison)
     - [2) Modélisations avec les paramètres par défaut](#2-Modélisations-avec-les-paramètres-par-défaut)
-    - [3) Modélisations optimisées : Présentation des stratégies d'optimisation](#3-Modélisations-optimisées---Présentation-des-stratégies-d'optimisation)
+    - [3) Modélisations optimisées : Présentation des stratégies d'optimisation](#3-Modélisations-optimisées---Présentation-des-stratégies-d-optimisation)
     - [4) Choix du meilleur modèle](#4-Choix-du-meilleur-modèle)
 - [III. Interprétation du meilleur modèle](#iii-interprétation-du-meilleur-modèle)
   - [A. Interprétation globale](#a-interprétation-globale)
