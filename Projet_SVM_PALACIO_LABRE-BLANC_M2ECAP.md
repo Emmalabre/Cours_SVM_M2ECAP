@@ -567,6 +567,17 @@ Nous avons également généré des PDP à partir des données non standardisée
 <p align="justify">
 Pour GTP, la probabilité de fumer augmente nettement jusqu’à environ 80 U/L, puis se stabilise. Pour l’âge, la probabilité augmente progressivement jusqu’à 40 ans, puis diminue au-delà. L’augmentation des triglycérides entraîne une hausse continue de la probabilité de fumer. Pour ALT, plus les valeurs augmentent, plus la probabilité diminue, de manière régulière. Enfin, pour AST, une hausse entre 10 et 20 U/L correspond à une diminution de la probabilité, qui se stabilise entre 20 et 40, avant d’augmenter légèrement au-delà de 40 U/L, avec une stabilisation vers 45.</p>
 
+<p align="justify">
+Par ailleurs, nous avons calculé les effets locaux accumulés (ALE) (<strong>Figure 9</strong>) pour vérifier la robustesse des résultats. Les courbes obtenues sont très proches de celles des PDP, ce qui confirme que les relations identifiées par le modèle ne semblent pas trop affectées par des corrélations entre variables.</p>
+
+<p align="center"> <u>Figure 9 : Accumulated Loccal Effect (ALE) des variables quantitatives de la modélisation Gradient Boosting avec resample </p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/ale.png" alt="ALE">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+
 
 #### b) PDP de la variable qualitative 
 
