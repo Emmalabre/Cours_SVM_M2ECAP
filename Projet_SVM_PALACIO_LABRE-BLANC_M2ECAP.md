@@ -509,7 +509,6 @@ Nous proposons tout d'abord une analyse globale de son fonctionnement afin d’i
 ### 1) Importance des variables
 
 <p align="justify">
-
 Le graphique représentant l’importance des variables issu du modèle Gradient Boosting avec undersampling permet de visualiser quelles caractéristiques ont le plus contribué à la prédiction du statut de fumeur. Cette importance ne reflète pas la direction de l'effet (positive ou négative), mais indique dans quelle mesure chaque variable a été utilisée par le modèle pour améliorer sa capacité de prédiction. Donc, plus une variable a une importance élevée, plus elle a été jugée utile pour différencier les fumeurs des non-fumeurs dans les arbres de décision constituant le modèle (<strong>Figure 6</strong>).</p>
 
 <p align="center"> <u>Figure 6 : Importance des variables dans la modélisation Gradient Boosting avec resample </p>
@@ -623,6 +622,14 @@ Finalement, nous nous intéressons à l’interprétation des prédictions indiv
 
 Les courbes ICE permettent d’analyser l’effet d’une variable spécifique sur la prédiction pour chaque individu. Contrairement aux PDP qui affichent la moyenne des effets, l’ICE trace une courbe par individu, révélant les variations individuelles
 
+<p align="center"><u>Figure 12 : ICE de la modélisation Gradient Boosting avec resample</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdpindiv.png" alt="ICE">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
+
 les courbes ICE permettent d’aller plus loin en explorant la variabilité interindividuelle derrière ces effets moyens :
 
 Pour GTP, les courbes ICE confirment une relation croissante pour la majorité des individus. Toutefois, on observe que l’intensité de l’effet varie selon les personnes, certaines courbes étant plus plates ou plus abruptes que d’autres. Cela montre que l’impact de GTP n’est pas homogène dans toute la population.
@@ -641,6 +648,14 @@ Cette approche consiste à approximer localement le modèle complexe par un mod�
 Dans notre cas, nous avons utilisé un explainer en mode classification, en passant les données transformées (X_test_prepared), les noms des variables (feature_names) et les noms de classes (["non-fumeur", "fumeur"]).
 Nous avons sélectionné l’individu d’index i = 10 de notre jeu de test, et généré une explication à l’aide de la fonction explain_instance
 
+<p align="center"><u>Figure 13 : LIME de la modélisation Gradient Boosting avec resample</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/lime.png" alt="LIME">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
+
 Parmi les résultats obtenus :
 
 - Intercept : 0.0677 — c’est la probabilité moyenne d’être fumeur dans le voisinage généré par LIME
@@ -658,7 +673,23 @@ Après avoir exploré LIME, nous utilisons ici la méthode SHAP, qui décompose 
 
 Le **graphique Waterfall** représente l’explication locale pour un individu spécifique. La valeur moyenne des prédictions du modèle (appelée *base value*, ici -0.191 en log-odds) constitue le point de départ. À partir de là, chaque variable vient ajouter ou soustraire un effet pour aboutir à la prédiction finale, ici -0.293. Par exemple, le fait d’être un homme contribue fortement à augmenter la probabilité d’être fumeur (+0.88), tandis qu’un faible taux de GTP ou un âge élevé contribuent à réduire cette probabilité. On visualise ainsi clairement les forces "en présence" dans la décision du modèle.
 
+<p align="center"><u>Figure 14 : Waterfall de la modélisation Gradient Boosting avec resample</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/waterfall.png" alt="Waterfall">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
+
 Le **graphe SHAP beeswarm**, quant à lui, offre une vue globale sur l’influence des variables pour l’ensemble des prédictions. On observe que la variable `homme` est la plus influente, suivie par `Gtp`, `triglyceride`, `age` ou encore `ALT`. Les couleurs représentent la valeur de la variable : en rose pour les valeurs élevées, en bleu pour les faibles. Par exemple, un GTP ou un taux de triglycérides élevé pousse le modèle à prédire un statut de fumeur, tandis qu’un âge élevé contribue au contraire à diminuer cette probabilité.
+
+<p align="center"><u>Figure 15 : Beeswarm de la modélisation Gradient Boosting avec resample</u></p>
+
+<p align="center">
+  <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/beeswarm.png" alt="Beeswarm">
+</p>
+
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
 
 Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est classé comme fumeur (ou non) par le modèle, et d’identifier les facteurs personnels qui influencent le plus les prédictions.
 
