@@ -620,7 +620,8 @@ Finalement, nous nous intéressons à l’interprétation des prédictions indiv
 
 ### 1) ICE
 
-Les courbes ICE permettent d’analyser l’effet d’une variable spécifique sur la prédiction pour chaque individu. Contrairement aux PDP qui affichent la moyenne des effets, l’ICE trace une courbe par individu, révélant les variations individuelles
+<p align="justify">
+Les courbes ICE permettent d’analyser l’effet d’une variable spécifique sur la prédiction pour chaque individu. Contrairement aux PDP qui affichent la moyenne des effets, l’ICE trace une courbe par individu, révélant les variations individuelles. Cela permet d’aller plus loin en explorant la variabilité interindividuelle (<strong>Figure 12</strong>).</p>
 
 <p align="center"><u>Figure 12 : ICE de la modélisation Gradient Boosting avec resample</u></p>
 
@@ -630,23 +631,26 @@ Les courbes ICE permettent d’analyser l’effet d’une variable spécifique s
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
 
-les courbes ICE permettent d’aller plus loin en explorant la variabilité interindividuelle derrière ces effets moyens :
+<p align="justify">
+Nous constatons que, pour GTP, les courbes ICE confirment une relation croissante pour la majorité des individus. Toutefois, on observe que l’intensité de l’effet varie selon les personnes, certaines courbes étant plus plates ou plus abruptes que d’autres. Cela montre que l’impact de GTP n’est pas homogène dans toute la population.</p>
 
-Pour GTP, les courbes ICE confirment une relation croissante pour la majorité des individus. Toutefois, on observe que l’intensité de l’effet varie selon les personnes, certaines courbes étant plus plates ou plus abruptes que d’autres. Cela montre que l’impact de GTP n’est pas homogène dans toute la population.
+<p align="justify">
+Pour l’âge, les PDP suggéraient une relation non linéaire décroissante. Avec les courbes ICE on observe que de nombreuses courbes chutent fortement à partir d’un certain âge, confirmant que la majorité des individus âgés ont une probabilité prédite plus faible d’être fumeur. Mais d'autres courbes sont plus stables ou montrent un effet atténué, traduisant des profils atypiques : par exemple des fumeurs persistants parmi les personnes âgées.</p>
 
-Pour l’âge, les PDP suggéraient une relation non linéaire décroissante. Avec les courbes ICE on observe que de nombreuses courbes chutent fortement à partir d’un certain âge, confirmant que la majorité des individus âgés ont une probabilité prédite plus faible d’être fumeur. Mais d'autres courbes sont plus stables ou montrent un effet atténué, traduisant des profils atypiques : par exemple des fumeurs persistants parmi les personnes âgées.
+<p align="justify">
+Concernant les triglycérides, les ICE confirment une tendance ascendante relativement homogène, avec cependant quelques variations dans la pente, suggérant un effet plus marqué chez certains individus.</p>
 
-Concernant les triglycérides, les ICE confirment une tendance ascendante relativement homogène, avec cependant quelques variations dans la pente, suggérant un effet plus marqué chez certains individus.
-
-Et enfin pour ALT et AST montrent quant à elles une baisse globale des prédictions avec l’augmentation de ces enzymes, mais avec une dispersion faible. Cela pourrait indiquer que l’effet est plus stable ou moins influent, et pourrait refléter un phénomène indirect.
+<p align="justify">
+Et enfin les ICE des variables ALT et AST montrent quant à elles une baisse globale des prédictions avec l’augmentation de ces enzymes, mais avec une dispersion faible. Cela pourrait indiquer que l’effet est plus stable ou moins influent, et pourrait refléter un phénomène indirect.</p>
 
 ### 2) LIME
 
+<p align="justify">
 Afin de mieux comprendre les décisions de notre modèle Gradient Boosting pour un individu donné, nous avons utilisé la méthode LIME (Local Interpretable Model-agnostic Explanations).
-Cette approche consiste à approximer localement le modèle complexe par un modèle linéaire plus simple, permettant d’identifier quelles variables influencent une prédiction spécifique.
+Cette approche consiste à approximer localement le modèle complexe par un modèle linéaire plus simple, permettant d’identifier quelles variables influencent une prédiction spécifique.</p>
 
-Dans notre cas, nous avons utilisé un explainer en mode classification, en passant les données transformées (X_test_prepared), les noms des variables (feature_names) et les noms de classes (["non-fumeur", "fumeur"]).
-Nous avons sélectionné l’individu d’index i = 10 de notre jeu de test, et généré une explication à l’aide de la fonction explain_instance
+<p align="justify">
+Dans notre cas, nous avons utilisé un explainer en mode classification, en passant les données transformées (X_test_prepared), les noms des variables (feature_names) et les noms de classes (["non-fumeur", "fumeur"]). Nous avons sélectionné l’individu d’index i = 10 de notre jeu de test, et généré une explication à l’aide de la fonction explain_instance (<strong>Figure 13</strong>). </p>
 
 <p align="center"><u>Figure 13 : LIME de la modélisation Gradient Boosting avec resample</u></p>
 
@@ -656,22 +660,27 @@ Nous avons sélectionné l’individu d’index i = 10 de notre jeu de test, et 
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
 
+<p align="justify">
 Parmi les résultats obtenus :
 
 - Intercept : 0.0677 — c’est la probabilité moyenne d’être fumeur dans le voisinage généré par LIME
 - Prediction_local : 0.7692 — c’est la prédiction du modèle simplifié (local)
 - Right : 0.7855 — c’est la prédiction du modèle complexe (Gradient Boosting) pour cet individu
+</p>
 
+<p align="justify">
 Ce résultat indique une prédiction de 78 % de probabilité d’être fumeur. Les variables qui ont le plus contribué à cette prédiction sont :
-homme = 1 (poids : +0.48) : Être un homme a fortement poussé la prédiction vers "fumeur".
-triglyceride > 0.40, hemoglobin > 0.61, tartar = 1, et une valeur intermédiaire de GTP ont également influencé le modèle dans ce sens, mais de manière plus modérée.
-
+- homme = 1 (poids : +0.48) : Être un homme a fortement poussé la prédiction vers "fumeur".
+- triglyceride > 0.40, hemoglobin > 0.61, tartar = 1, et une valeur intermédiaire de GTP ont également influencé le modèle dans ce sens, mais de manière plus modérée.
+</p>
 
 ### 3) SHAP
 
-Après avoir exploré LIME, nous utilisons ici la méthode SHAP, qui décompose chaque prédiction en une somme de contributions individuelles attribuées aux variables, selon une logique d’équité. Chaque variable "participe" à la prédiction et se voit attribuer une valeur SHAP indiquant dans quelle mesure elle augmente ou diminue la probabilité prédite.
+<p align="justify">
+Après avoir exploré LIME, nous utilisons ici la méthode SHAP, qui décompose chaque prédiction en une somme de contributions individuelles attribuées aux variables, selon une logique d’équité. Chaque variable "participe" à la prédiction et se voit attribuer une valeur SHAP indiquant dans quelle mesure elle augmente ou diminue la probabilité prédite.</p>
 
-Le **graphique Waterfall** représente l’explication locale pour un individu spécifique. La valeur moyenne des prédictions du modèle (appelée *base value*, ici -0.191 en log-odds) constitue le point de départ. À partir de là, chaque variable vient ajouter ou soustraire un effet pour aboutir à la prédiction finale, ici -0.293. Par exemple, le fait d’être un homme contribue fortement à augmenter la probabilité d’être fumeur (+0.88), tandis qu’un faible taux de GTP ou un âge élevé contribuent à réduire cette probabilité. On visualise ainsi clairement les forces "en présence" dans la décision du modèle.
+<p align="justify">
+Le <strong>graphique Waterfall</strong> (<strong>Figure 14</strong>) représente l’explication locale pour un individu spécifique. La valeur moyenne des prédictions du modèle (appelée *base value*, ici -0.191 en log-odds) constitue le point de départ. À partir de là, chaque variable vient ajouter ou soustraire un effet pour aboutir à la prédiction finale, ici -0.293. Par exemple, le fait d’être un homme contribue fortement à augmenter la probabilité d’être fumeur (+0.88), tout comme le fait d'avoir des carries. Tandis qu’un faible taux de GTP ou l'absence de tartre contribuent à réduire cette probabilité. On visualise ainsi clairement les forces "en présence" dans la décision du modèle.</p>
 
 <p align="center"><u>Figure 14 : Waterfall de la modélisation Gradient Boosting avec resample</u></p>
 
@@ -681,7 +690,8 @@ Le **graphique Waterfall** représente l’explication locale pour un individu s
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
 
-Le **graphe SHAP beeswarm**, quant à lui, offre une vue globale sur l’influence des variables pour l’ensemble des prédictions. On observe que la variable `homme` est la plus influente, suivie par `Gtp`, `triglyceride`, `age` ou encore `ALT`. Les couleurs représentent la valeur de la variable : en rose pour les valeurs élevées, en bleu pour les faibles. Par exemple, un GTP ou un taux de triglycérides élevé pousse le modèle à prédire un statut de fumeur, tandis qu’un âge élevé contribue au contraire à diminuer cette probabilité.
+<p align="justify">
+Le <strong>graphique SHAP beeswarm</strong> <strong>Figure 15</strong>, quant à lui, offre une vue globale sur l’influence des variables pour l’ensemble des prédictions. 
 
 <p align="center"><u>Figure 15 : Beeswarm de la modélisation Gradient Boosting avec resample</u></p>
 
@@ -690,10 +700,18 @@ Le **graphe SHAP beeswarm**, quant à lui, offre une vue globale sur l’influen
 </p>
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
+  
+On observe que la variable `homme` est la plus influente, suivie par `Gtp`, `triglyceride`, `age` ou encore `ALT`. Les couleurs représentent la valeur de la variable : en rose pour les valeurs élevées, en bleu pour les faibles. Par exemple, un GTP ou un taux de triglycérides élevé pousse le modèle à prédire un statut de fumeur, tandis qu’un âge élevé contribue au contraire à diminuer cette probabilité.</p>
 
+<p align="justify">
+On observe également une nette séparation des points colorés pour la majorité des variables dans le graphique beeswarm. Les valeurs en rouge sont associées à une augmentation de la probabilité d’être fumeur, tandis que les valeurs en bleu tendent à la diminuer. Par exemple, des taux élevés de triglycérides et de GTP augmentent la probabilité d’être fumeur, alors qu’un âge élevé la réduit. Pour les variables binaires comme homme, tartar et dental carries, la séparation est encore plus marquée, ce qui suggère qu’elles permettent de bien distinguer les individus fumeurs des non-fumeurs. Cette répartition claire reflète un comportement cohérent du modèle et confirme l’influence importante de ces variables dans ses décisions. </p>
+
+
+<p align="justify">
 Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est classé comme fumeur (ou non) par le modèle, et d’identifier les facteurs personnels qui influencent le plus les prédictions.
 
 # Conclusion
+
 
 
 
@@ -770,7 +788,7 @@ Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est
   - [B. Interprétation locale](#b-interprétation-locale)
     - [1) ICE](#1-ice)
     - [2) LIME](#2-lime)
-    - [3) SHAP](#2-shap)
+    - [3) SHAP](#3-shap)
 - [Conclusion](#conclusion)
 - [Glossaire](#Glossaire)
 </p>
