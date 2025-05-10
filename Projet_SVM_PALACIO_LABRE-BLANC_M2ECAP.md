@@ -146,11 +146,7 @@ Ce graphique met en évidence un déséquilibre modéré : sur les 44 552 indivi
 </p>
 
 <p align="justify">
-Un taux de 37 % pour la classe minoritaire n’est pas considéré comme fortement déséquilibré en apprentissage automatique. En général, le recours à des techniques de rééchantillonnage devient crucial lorsque la proportion descend en dessous de 20 %. Dans notre cas, la classe « fumeur » est suffisamment représentée pour permettre à plusieurs algorithmes, notamment ceux basés sur les arbres de décision, d’apprendre efficacement sans correction initiale. 
-</p>
-
-<p align="justify">
-Nous procéderons donc, dans un premier temps, à l’entraînement des modèles sur les données telles quelles. Si les performances montrent par la suite un déséquilibre significatif (par exemple à travers les matrices de confusion), nous envisagerons alors l’utilisation de méthodes de rééchantillonnage telles que le sur-échantillonnage, le sous-échantillonnage ou encore le SMOTE.
+Un taux de 37 % pour la classe minoritaire n'est pas considéré comme fortement déséquilibré en apprentissage automatique. Ainsi, dans un premier temps, nous procéderons à des modélisations sans rééchantillonnage. Cependant, nous envisagerons l'utilisation de méthodes de rééchantillonnage pour déterminer si cela peut améliorer les performances des modèles.</p>
 
 ### 2. Prédicteurs quantitatifs
 
@@ -294,8 +290,7 @@ Elle révèle une population adulte majoritairement masculine, une proportion si
 <p align="justify">Ces écarts suggèrent une association entre le statut tabagique et certaines caractéristiques physiologiques, cohérente avec les effets connus du tabac sur la santé métabolique et cardiovasculaire. </p> 
 <p align="justify"> De plus, une analyse de variance (ANOVA) a été conduite pour tester les différences moyennes entre fumeurs et non-fumeurs pour chaque variable continue. Les résultats indiquent que l’ensemble des variables analysées présentent des p-values significatives, suggérant des différences statistiquement robustes entre les deux groupes. </p>
 <p align="justify">
-Par ailleurs, la variable taille présente une différence notable selon le statut tabagique et semble discriminante. Toutefois, sa forte corrélation avec le poids (r = 0.68) suggère une redondance. Bien que le VIF du poids reste modéré (~6), il indique une certaine multicolinéarité. Le poids étant plus pertinent cliniquement, nous avons choisi de supprimer la taille pour éviter la redondance et limiter les biais potentiels liés au sexe.
-</p>
+Par ailleurs, la variable taille (height(cm)) présente une forte association avec le statut de fumeur. Toutefois, cette relation doit être interprétee avec prudence, car d'un point de vue biologique, la taille n'a pas de lien direct ou plausible avec le tabagisme. Il s'agit donc très probablement d'un effet de confusion, en particulier lié au sexe : les hommes sont en moyenne plus grands que les femmes et ils sont également plus souvent fumeurs. La taille sert alors de proxy implicite pour le genre. Ce type de biais est important à identifier car il peut fausser l'interprétation des modèles. Nous décidons alors de ne pas conserver la variable height(cm) pour la modélisation, d'autant plus que sa présence induit de la multicolinéarité.</p>
 
 
 #### b) Liens entre la variable cible et les prédicteurs qualitatifs
