@@ -770,6 +770,7 @@ Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est
   - [B. Interprétation locale](#b-interprétation-locale)
     - [1) ICE](#1-ice)
     - [2) LIME](#2-lime)
+    - [3) SHAP](#2-shap)
 - [Conclusion](#conclusion)
 - [Glossaire](#Glossaire)
 </p>
