@@ -611,8 +611,6 @@ La variable homme se distingue nettement, avec une augmentation moyenne de l’e
 <p align="justify">
 Certaines variables, telles que pb_hearing, eyesight ou dental_caries, n’induisent aucune variation notable du score de rappel lorsqu’elles sont permutées. Elles sont donc considérées comme peu informatives dans ce contexte. À l’inverse, des variables comme serum_creatinine, waist ou fasting blood sugar présentent une importance négative, ce qui signifie que leur permutation améliore légèrement le rappel. Cela pourrait s’expliquer par la présence de bruit, une corrélation trompeuse ou une certaine redondance nuisible dans la modélisation.</p>
 
-### 4) Effets joints entre les variables
-
 ## B. Interprétation locale
 
 <p align="justify">
