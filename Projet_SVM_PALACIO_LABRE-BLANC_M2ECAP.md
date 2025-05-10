@@ -582,9 +582,9 @@ Par ailleurs, nous avons calculé les effets locaux accumulés (ALE) (<strong>Fi
 #### b) PDP de la variable qualitative 
 
 <p align="justify">
-Concernant la variable qualitative identifiée comme la plus importante, selon ce PDP (<strong>Figure 9</strong>), on constate que le fait d’être un homme augmente significativement la probabilité prédite de fumer, tandis qu’être une femme la diminue. Autrement dit, toutes choses égales par ailleurs, le modèle estime qu’un homme a plus de chances d’être fumeur qu’une femme. Cette observation est cohérente avec de nombreuses données épidémiologiques : dans plusieurs pays, et notamment en population adulte, les taux de tabagisme sont plus élevés chez les hommes que chez les femmes. Cela peut s’expliquer par des facteurs sociaux et culturels, comme des différences dans les normes comportementales, une exposition plus fréquente à certains environnements propices au tabagisme (par exemple, certains milieux professionnels), ou encore des stratégies de gestion du stress qui varient selon le genre. </p>
+Concernant la variable qualitative identifiée comme la plus importante, selon ce PDP (<strong>Figure 10</strong>), on constate que le fait d’être un homme augmente significativement la probabilité prédite de fumer, tandis qu’être une femme la diminue. Autrement dit, toutes choses égales par ailleurs, le modèle estime qu’un homme a plus de chances d’être fumeur qu’une femme. Cette observation est cohérente avec de nombreuses données épidémiologiques : dans plusieurs pays, et notamment en population adulte, les taux de tabagisme sont plus élevés chez les hommes que chez les femmes. Cela peut s’expliquer par des facteurs sociaux et culturels, comme des différences dans les normes comportementales, une exposition plus fréquente à certains environnements propices au tabagisme (par exemple, certains milieux professionnels), ou encore des stratégies de gestion du stress qui varient selon le genre. </p>
 
-<p align="center"> <u>Figure 9 : Partial dépendence plot (PDP) de la variable homme de la modélisation Gradient Boosting avec resample </p>
+<p align="center"> <u>Figure 10 : Partial dépendence plot (PDP) de la variable homme de la modélisation Gradient Boosting avec resample </p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/pdp2.png" alt="Importance">
@@ -594,29 +594,73 @@ Concernant la variable qualitative identifiée comme la plus importante, selon c
 
 ### 3) Permutation features importance
 
-<p align="center"> <u>Figure 9 : Permutation features importance de la modélisation Gradient Boosting avec resample </p>
+
+<p align="justify">
+Par la suite, nous avons évalué l’importance des variables via la méthode de permutation (<strong>Figure 11</strong>). Cette approche permet de quantifier la contribution réelle de chaque variable à la performance du modèle en mesurant l’impact de sa permutation aléatoire sur le score de rappel. L’axe des abscisses représente ici la variation moyenne du rappel induite par la perturbation de chaque variable : plus cette variation est élevée, plus la variable est jugée importante pour détecter les individus fumeurs.</p>
+
+<p align="center"><u>Figure 11 : Permutation Features Importance de la modélisation Gradient Boosting avec resample</u></p>
 
 <p align="center">
   <img src="https://github.com/Emmalabre/Cours_SVM_M2ECAP/blob/main/Screenshots/permutation.png" alt="Importance">
 </p>
 
-<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
+<p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
+
+<p align="justify">
+La variable homme se distingue nettement, avec une augmentation moyenne de l’erreur de rappel d’environ 0,28 lorsqu’elle est permutée, confirmant ainsi son rôle central dans la prédiction du statut tabagique. Elle est suivie par GTP (~0,10), enzyme déjà identifiée comme fortement liée au comportement tabagique dans les PDP. D’autres variables telles que l’hémoglobine, ALT et les triglycérides présentent également une importance modérée (~0,02), suggérant qu’elles contribuent à la prédiction sans être centrale.</p>
+
+<p align="justify">
+Certaines variables, telles que pb_hearing, eyesight ou dental_caries, n’induisent aucune variation notable du score de rappel lorsqu’elles sont permutées. Elles sont donc considérées comme peu informatives dans ce contexte. À l’inverse, des variables comme serum_creatinine, waist ou fasting blood sugar présentent une importance négative, ce qui signifie que leur permutation améliore légèrement le rappel. Cela pourrait s’expliquer par la présence de bruit, une corrélation trompeuse ou une certaine redondance nuisible dans la modélisation.</p>
 
 ### 4) Effets joints entre les variables
 
 ## B. Interprétation locale
 
-Individual conditional curves (ICE) basée sur les Partial Depence Plot(PDP) mais par instance cette fois
-
-Local surrogate models (LIME) expliquer une prédiction en remplacant un modèle black box avec un modèle white box localement
-
-Shapley values : méthode d'attribution des prédictions basées sur les caractéristiques individuelles
-
-SHAP : Dérivée des shapley values avec également avec des global model agnostic (méthode la plus populaire)
+<p align="justify">
+Finalement, nous nous intéressons à l’interprétation des prédictions individuelles, aussi appelée explicabilité locale. L’objectif est d'expliquer pourquoi le modèle a prédit qu’un individu était fumeur (ou non), en identifiant les variables qui ont le plus influencé cette prédiction.</p>
 
 ### 1) ICE
 
+Les courbes ICE permettent d’analyser l’effet d’une variable spécifique sur la prédiction pour chaque individu. Contrairement aux PDP qui affichent la moyenne des effets, l’ICE trace une courbe par individu, révélant les variations individuelles
+
+les courbes ICE permettent d’aller plus loin en explorant la variabilité interindividuelle derrière ces effets moyens :
+
+Pour GTP, les courbes ICE confirment une relation croissante pour la majorité des individus. Toutefois, on observe que l’intensité de l’effet varie selon les personnes, certaines courbes étant plus plates ou plus abruptes que d’autres. Cela montre que l’impact de GTP n’est pas homogène dans toute la population.
+
+Pour l’âge, les PDP suggéraient une relation non linéaire décroissante. Avec les courbes ICE on observe que de nombreuses courbes chutent fortement à partir d’un certain âge, confirmant que la majorité des individus âgés ont une probabilité prédite plus faible d’être fumeur. Mais d'autres courbes sont plus stables ou montrent un effet atténué, traduisant des profils atypiques : par exemple des fumeurs persistants parmi les personnes âgées.
+
+Concernant les triglycérides, les ICE confirment une tendance ascendante relativement homogène, avec cependant quelques variations dans la pente, suggérant un effet plus marqué chez certains individus.
+
+Et enfin pour ALT et AST montrent quant à elles une baisse globale des prédictions avec l’augmentation de ces enzymes, mais avec une dispersion faible. Cela pourrait indiquer que l’effet est plus stable ou moins influent, et pourrait refléter un phénomène indirect.
+
 ### 2) LIME
+
+Afin de mieux comprendre les décisions de notre modèle Gradient Boosting pour un individu donné, nous avons utilisé la méthode LIME (Local Interpretable Model-agnostic Explanations).
+Cette approche consiste à approximer localement le modèle complexe par un modèle linéaire plus simple, permettant d’identifier quelles variables influencent une prédiction spécifique.
+
+Dans notre cas, nous avons utilisé un explainer en mode classification, en passant les données transformées (X_test_prepared), les noms des variables (feature_names) et les noms de classes (["non-fumeur", "fumeur"]).
+Nous avons sélectionné l’individu d’index i = 10 de notre jeu de test, et généré une explication à l’aide de la fonction explain_instance
+
+Parmi les résultats obtenus :
+
+- Intercept : 0.0677 — c’est la probabilité moyenne d’être fumeur dans le voisinage généré par LIME
+- Prediction_local : 0.7692 — c’est la prédiction du modèle simplifié (local)
+- Right : 0.7855 — c’est la prédiction du modèle complexe (Gradient Boosting) pour cet individu
+
+Ce résultat indique une prédiction de 78 % de probabilité d’être fumeur. Les variables qui ont le plus contribué à cette prédiction sont :
+homme = 1 (poids : +0.48) : Être un homme a fortement poussé la prédiction vers "fumeur".
+triglyceride > 0.40, hemoglobin > 0.61, tartar = 1, et une valeur intermédiaire de GTP ont également influencé le modèle dans ce sens, mais de manière plus modérée.
+
+
+### 3) SHAP
+
+Après avoir exploré LIME, nous utilisons ici la méthode SHAP, qui décompose chaque prédiction en une somme de contributions individuelles attribuées aux variables, selon une logique d’équité. Chaque variable "participe" à la prédiction et se voit attribuer une valeur SHAP indiquant dans quelle mesure elle augmente ou diminue la probabilité prédite.
+
+Le **graphique Waterfall** représente l’explication locale pour un individu spécifique. La valeur moyenne des prédictions du modèle (appelée *base value*, ici -0.191 en log-odds) constitue le point de départ. À partir de là, chaque variable vient ajouter ou soustraire un effet pour aboutir à la prédiction finale, ici -0.293. Par exemple, le fait d’être un homme contribue fortement à augmenter la probabilité d’être fumeur (+0.88), tandis qu’un faible taux de GTP ou un âge élevé contribuent à réduire cette probabilité. On visualise ainsi clairement les forces "en présence" dans la décision du modèle.
+
+Le **graphe SHAP beeswarm**, quant à lui, offre une vue globale sur l’influence des variables pour l’ensemble des prédictions. On observe que la variable `homme` est la plus influente, suivie par `Gtp`, `triglyceride`, `age` ou encore `ALT`. Les couleurs représentent la valeur de la variable : en rose pour les valeurs élevées, en bleu pour les faibles. Par exemple, un GTP ou un taux de triglycérides élevé pousse le modèle à prédire un statut de fumeur, tandis qu’un âge élevé contribue au contraire à diminuer cette probabilité.
+
+Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est classé comme fumeur (ou non) par le modèle, et d’identifier les facteurs personnels qui influencent le plus les prédictions.
 
 # Conclusion
 
