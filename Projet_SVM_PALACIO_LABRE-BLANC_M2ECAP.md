@@ -708,11 +708,24 @@ On observe également une nette séparation des points colorés pour la majorit�
 
 
 <p align="justify">
-Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est classé comme fumeur (ou non) par le modèle, et d’identifier les facteurs personnels qui influencent le plus les prédictions.
+Ces visualisations, nous permettent de mieux comprendre pourquoi un individu est classé comme fumeur (ou non) par le modèle, et d’identifier les facteurs personnels qui influencent le plus les prédictions.</p>
 
 # Conclusion
 
-
+<p align="justify">
+Cette étude visait à prédire le statut tabagique (fumeur ou non-fumeur) à partir de données biologiques et de santé issues d'examens médicaux réalisés en Corée du Sud entre 2002 et 2015. Il s’agissait d’un problème de classification binaire, mené à partir d’un échantillon extrait d’une base de données disponible sur Kaggle.</p>
+<p align="justify">
+Nous avons débuté par une analyse exploratoire rigoureuse des données : suppression des doublons, vérification de l'absence de valeurs manquantes, corrections de types et description statistique des variables. Cette phase nous a permis de mieux comprendre les distributions et les éventuelles corrélations.</p>
+<p align="justify">
+Un prétraitement a ensuite été appliqué pour préparer les données à la modélisation : séparation en jeu d’entraînement et de test, standardisation des variables numériques, winsorisation pour limiter l’effet des valeurs extrêmes, et encodage des variables catégorielles.</p>
+<p align="justify">
+Nous avons testé plusieurs approches de modélisation supervisée, en explorant différentes stratégies : utilisation des hyperparamètres par défaut, techniques de sous-échantillonnage (undersampling), sélection de variables, optimisation des hyperparamètres, ou encore transformation logarithmique de certaines variables. Les modèles ont été comparés à l’aide de plusieurs métriques, notamment le F1-score et le recall, afin de mieux prendre en compte le déséquilibre des classes.</p>
+<p align="justify">
+Au terme de cette analyse, le modèle de Gradient Boosting avec undersampling s’est avéré le plus performant et le plus adapté à notre problématique. En effet, il présentait le meilleur F1-score, ainsi qu’un des meilleurs recall, ce qui est particulièrement important dans notre contexte. Dans le domaine de la santé, il est essentiel de minimiser les faux négatifs, c’est-à-dire de bien identifier les individus fumeurs, afin de pouvoir cibler les actions de prévention ou de suivi médical. Ce modèle offrait ainsi un compromis optimal entre précision et sensibilité, rendant ses prédictions à la fois fiables et utiles pour un objectif d’identification.</p>
+<p align="justify">
+Grâce aux outils d’interprétabilité, nous avons pu identifier les variables ayant le plus influencé les décisions du modèle. En particulier, le fait d’être un homme s’est révélé comme le facteur le plus discriminant, contribuant fortement à augmenter la probabilité d’être fumeur. Les variables GTP, triglycérides, âge, ALT et AST ont également joué un rôle significatif. Une augmentation de GTP ou des triglycérides est associée à une probabilité plus élevée d’être fumeur, tandis qu’un âge avancé, ou des taux plus élevés de ALT/AST, tendent à réduire cette probabilité — même si cet effet reste plus modéré.</p>
+<p align="justify">
+Enfin, nos résultats apparaissent cohérents avec la littérature médicale : les biomarqueurs identifiés et les tendances observées s’alignent avec ce que l’on sait des profils biologiques associés au tabagisme. Cette étude illustre ainsi l’intérêt de combiner des approches de machine learning robustes avec des outils d’interprétabilité, pour à la fois prédire efficacement et mieux comprendre les facteurs de risque comportementaux à partir de données cliniques.</p>
 
 
 
