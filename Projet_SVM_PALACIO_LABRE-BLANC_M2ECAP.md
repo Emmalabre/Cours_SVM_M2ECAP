@@ -410,7 +410,7 @@ Les résultats initiaux ont été obtenus sans validation croisée, en comparant
  <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em> </p>
 
 <p align="justify">
-Pour affiner cette analyse, une validation croisée à 5 plis a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli et les statistiques sont présentés dans le <strong>Tableau 6</strong>
+Pour affiner cette analyse, une validation croisée à 5 plis a été réalisée afin d’estimer la stabilité des modèles et leur capacité de généralisation sur des sous-ensembles différents du jeu de données. Les résultats par pli et les statistiques sont présentés dans le <strong>Tableau 6</strong> : 
 </p>
 
 <p align="center"> <u>Tableau 6 : Performances en cross-validation des modèles non optimisés </u></p>
@@ -663,14 +663,14 @@ Dans notre cas, nous avons utilisé un explainer en mode classification, en pass
 <p align="justify">
 Parmi les résultats obtenus :
 
-- Intercept : 0.0677 — c’est la probabilité moyenne d’être fumeur dans le voisinage généré par LIME
-- Prediction_local : 0.7692 — c’est la prédiction du modèle simplifié (local)
+- Intercept : 0.0665 — c’est la probabilité moyenne d’être fumeur dans le voisinage généré par LIME
+- Prediction_local : 0.7746 — c’est la prédiction du modèle simplifié (local)
 - Right : 0.7855 — c’est la prédiction du modèle complexe (Gradient Boosting) pour cet individu
 </p>
 
 <p align="justify">
-Ce résultat indique une prédiction de 78 % de probabilité d’être fumeur. Les variables qui ont le plus contribué à cette prédiction sont :
-- homme = 1 (poids : +0.48) : Être un homme a fortement poussé la prédiction vers "fumeur".
+Ce résultat indique une prédiction de 79 % de probabilité d’être fumeur. Les variables qui ont le plus contribué à cette prédiction sont :
+- homme = 1 (poids : +0.49) : Être un homme a fortement poussé la prédiction vers "fumeur".
 - triglyceride > 0.40, hemoglobin > 0.61, tartar = 1, et une valeur intermédiaire de GTP ont également influencé le modèle dans ce sens, mais de manière plus modérée.
 </p>
 
@@ -700,7 +700,8 @@ Le <strong>graphique SHAP beeswarm</strong> <strong>Figure 15</strong>, quant à
 </p>
 
 <p align="center"><em>Source : Dossier SVM, Isabel Palacio et Emma Labre-Blanc</em></p>
-  
+
+<p align="justify">
 On observe que la variable `homme` est la plus influente, suivie par `Gtp`, `triglyceride`, `age` ou encore `ALT`. Les couleurs représentent la valeur de la variable : en rose pour les valeurs élevées, en bleu pour les faibles. Par exemple, un GTP ou un taux de triglycérides élevé pousse le modèle à prédire un statut de fumeur, tandis qu’un âge élevé contribue au contraire à diminuer cette probabilité.</p>
 
 <p align="justify">
